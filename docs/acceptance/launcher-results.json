@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "checks": [
+    "Plain python launcher, automatic venv fallback, spaced input/data paths, occupied port fallback",
+    "Graceful Ctrl+C/SIGBREAK shutdown returns zero",
+    "Invalid port produces nonzero exit and diagnostic",
+    "Missing input produces nonzero exit and diagnostic",
+    "Missing compiler produces nonzero exit and diagnostic"
+  ]
+}

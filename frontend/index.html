@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCPC Local · 本地比赛</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/vendor/katex/dist/katex.min.css">
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/vendor/marked/lib/marked.umd.js"></script>
+  <script defer src="/vendor/dompurify/dist/purify.min.js"></script>
+  <script defer src="/vendor/katex/dist/katex.min.js"></script>
+  <script defer src="/vendor/katex/dist/contrib/auto-render.min.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <a class="brand" href="#problems" aria-label="CCPC Local 首页"><span class="bars"
+          aria-hidden="true"><i></i><i></i><i></i></span><span><strong>CCPC<span>LOCAL</span></strong><small>本地 OJ ·
+            Virtual Participation</small></span></a>
+      <div class="connection"><span class="status-dot"></span>localhost <span id="connection-label">正在连接</span></div>
+    </header>
+    <div class="contest-heading"><span class="eyebrow">VIRTUAL CONTEST</span>
+      <h1 id="contest-title">正在载入比赛…</h1>
+    </div>
+    <nav class="tabs" aria-label="比赛导航">
+      <a href="#problems" data-tab="problems">题目列表</a><a href="#submit" data-tab="submit">提交代码</a><a href="#submissions"
+        data-tab="submissions">我的提交</a><a href="#board" data-tab="board">比赛榜单</a>
+      <span class="nav-phase" id="nav-phase"></span>
+    </nav>
+    <div id="error" class="error-banner" role="alert" hidden></div>
+    <div class="layout">
+      <main id="content" aria-live="polite">
+        <div class="empty">正在读取本地比赛资料…</div>
+      </main>
+      <aside id="sidebar" aria-label="比赛信息"></aside>
+    </div>
+    <footer>CCPC Local <span>·</span> 比赛时钟、判题与榜单均由本机服务提供 <span>·</span> 四小时公开快照并封榜</footer>
+  </div>
+  <div id="toast" role="status" hidden></div>
+</body>
+
+</html>

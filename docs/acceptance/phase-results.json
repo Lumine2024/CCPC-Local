@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "injected_clock": true,
+  "synthetic_verdicts": false,
+  "checks": [
+    "2h real replay: only A/G/L pass threshold; other counts remain null",
+    "4h all 13 columns public; counts match independent baseline",
+    "4h10m public rows frozen; submission form still enabled",
+    "5h submissions disabled; explicit final result excludes 186 out-of-range events",
+    "New VP and archive selector preserve previous session"
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "slug": "shaanxi-2025-k-chess-game",
+  "title": "K. Chess Game",
+  "interactive": false,
+  "timeLimitMs": 1500,
+  "memoryLimitMb": 512,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "parallel-1",
+        "type": "parallel",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "parallel-2",
+        "type": "parallel",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "parallel-3",
+        "type": "parallel",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "odd-1",
+        "type": "odd",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "odd-2",
+        "type": "odd",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "odd-3",
+        "type": "odd",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "odd-4",
+        "type": "odd",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "even-1",
+        "type": "even",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "even-2",
+        "type": "even",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "even-3",
+        "type": "even",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-1",
+        "type": "random-small",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-2",
+        "type": "random-small",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-3",
+        "type": "random-small",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-4",
+        "type": "random-small",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-5",
+        "type": "random-small",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-6",
+        "type": "random-small",
+        "seed": 6,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-7",
+        "type": "random-small",
+        "seed": 7,
+        "group": "secret"
+      },
+      {
+        "name": "random-small-8",
+        "type": "random-small",
+        "seed": 8,
+        "group": "secret"
+      },
+      {
+        "name": "isolated-1",
+        "type": "isolated",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "isolated-2",
+        "type": "isolated",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "path-1",
+        "type": "path",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "path-2",
+        "type": "path",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "path-3",
+        "type": "path",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "path-4",
+        "type": "path",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "star-1",
+        "type": "star",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "star-2",
+        "type": "star",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "star-3",
+        "type": "star",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "random-large-1",
+        "type": "random-large",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "random-large-2",
+        "type": "random-large",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "random-large-3",
+        "type": "random-large",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "random-large-4",
+        "type": "random-large",
+        "seed": 4,
+        "group": "secret"
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference",
+      "cases": [
+        "sample",
+        "parallel-1",
+        "parallel-2",
+        "parallel-3",
+        "odd-1",
+        "odd-2",
+        "odd-3",
+        "odd-4",
+        "even-1",
+        "even-2",
+        "even-3",
+        "random-small-1",
+        "random-small-2",
+        "random-small-3",
+        "random-small-4",
+        "random-small-5",
+        "random-small-6",
+        "random-small-7",
+        "random-small-8"
+      ]
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "wrong-a",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "wrong-b",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

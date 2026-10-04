@@ -1,0 +1,268 @@
+{
+  "slug": "shaanxi-2025-k-chess-game",
+  "title": "K. Chess Game",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:04:17 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-k-chess-game",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-k-chess-game\\exported-tests",
+  "caseCount": 32,
+  "cases": [
+    {
+      "name": "sample",
+      "type": "sample",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample.in",
+      "answer": "sample\\sample.ans"
+    },
+    {
+      "name": "parallel-1",
+      "type": "parallel",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\parallel-1.in",
+      "answer": "secret\\parallel-1.ans"
+    },
+    {
+      "name": "parallel-2",
+      "type": "parallel",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\parallel-2.in",
+      "answer": "secret\\parallel-2.ans"
+    },
+    {
+      "name": "parallel-3",
+      "type": "parallel",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\parallel-3.in",
+      "answer": "secret\\parallel-3.ans"
+    },
+    {
+      "name": "odd-1",
+      "type": "odd",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\odd-1.in",
+      "answer": "secret\\odd-1.ans"
+    },
+    {
+      "name": "odd-2",
+      "type": "odd",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\odd-2.in",
+      "answer": "secret\\odd-2.ans"
+    },
+    {
+      "name": "odd-3",
+      "type": "odd",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\odd-3.in",
+      "answer": "secret\\odd-3.ans"
+    },
+    {
+      "name": "odd-4",
+      "type": "odd",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\odd-4.in",
+      "answer": "secret\\odd-4.ans"
+    },
+    {
+      "name": "even-1",
+      "type": "even",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\even-1.in",
+      "answer": "secret\\even-1.ans"
+    },
+    {
+      "name": "even-2",
+      "type": "even",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\even-2.in",
+      "answer": "secret\\even-2.ans"
+    },
+    {
+      "name": "even-3",
+      "type": "even",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\even-3.in",
+      "answer": "secret\\even-3.ans"
+    },
+    {
+      "name": "random-small-1",
+      "type": "random-small",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\random-small-1.in",
+      "answer": "secret\\random-small-1.ans"
+    },
+    {
+      "name": "random-small-2",
+      "type": "random-small",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\random-small-2.in",
+      "answer": "secret\\random-small-2.ans"
+    },
+    {
+      "name": "random-small-3",
+      "type": "random-small",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\random-small-3.in",
+      "answer": "secret\\random-small-3.ans"
+    },
+    {
+      "name": "random-small-4",
+      "type": "random-small",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\random-small-4.in",
+      "answer": "secret\\random-small-4.ans"
+    },
+    {
+      "name": "random-small-5",
+      "type": "random-small",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\random-small-5.in",
+      "answer": "secret\\random-small-5.ans"
+    },
+    {
+      "name": "random-small-6",
+      "type": "random-small",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\random-small-6.in",
+      "answer": "secret\\random-small-6.ans"
+    },
+    {
+      "name": "random-small-7",
+      "type": "random-small",
+      "seed": "7",
+      "group": "secret",
+      "input": "secret\\random-small-7.in",
+      "answer": "secret\\random-small-7.ans"
+    },
+    {
+      "name": "random-small-8",
+      "type": "random-small",
+      "seed": "8",
+      "group": "secret",
+      "input": "secret\\random-small-8.in",
+      "answer": "secret\\random-small-8.ans"
+    },
+    {
+      "name": "isolated-1",
+      "type": "isolated",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\isolated-1.in",
+      "answer": "secret\\isolated-1.ans"
+    },
+    {
+      "name": "isolated-2",
+      "type": "isolated",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\isolated-2.in",
+      "answer": "secret\\isolated-2.ans"
+    },
+    {
+      "name": "path-1",
+      "type": "path",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\path-1.in",
+      "answer": "secret\\path-1.ans"
+    },
+    {
+      "name": "path-2",
+      "type": "path",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\path-2.in",
+      "answer": "secret\\path-2.ans"
+    },
+    {
+      "name": "path-3",
+      "type": "path",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\path-3.in",
+      "answer": "secret\\path-3.ans"
+    },
+    {
+      "name": "path-4",
+      "type": "path",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\path-4.in",
+      "answer": "secret\\path-4.ans"
+    },
+    {
+      "name": "star-1",
+      "type": "star",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\star-1.in",
+      "answer": "secret\\star-1.ans"
+    },
+    {
+      "name": "star-2",
+      "type": "star",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\star-2.in",
+      "answer": "secret\\star-2.ans"
+    },
+    {
+      "name": "star-3",
+      "type": "star",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\star-3.in",
+      "answer": "secret\\star-3.ans"
+    },
+    {
+      "name": "random-large-1",
+      "type": "random-large",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\random-large-1.in",
+      "answer": "secret\\random-large-1.ans"
+    },
+    {
+      "name": "random-large-2",
+      "type": "random-large",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\random-large-2.in",
+      "answer": "secret\\random-large-2.ans"
+    },
+    {
+      "name": "random-large-3",
+      "type": "random-large",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\random-large-3.in",
+      "answer": "secret\\random-large-3.ans"
+    },
+    {
+      "name": "random-large-4",
+      "type": "random-large",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\random-large-4.in",
+      "answer": "secret\\random-large-4.ans"
+    }
+  ]
+}

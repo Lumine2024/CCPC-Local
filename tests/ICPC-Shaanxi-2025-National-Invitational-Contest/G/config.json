@@ -1,0 +1,350 @@
+{
+  "slug": "shaanxi-2025-g-juan",
+  "title": "Juan",
+  "interactive": false,
+  "timeLimitMs": 1000,
+  "memoryLimitMb": 512,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample-1",
+        "type": "sample-1",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "sample-2",
+        "type": "sample-2",
+        "seed": 2,
+        "group": "sample"
+      },
+      {
+        "name": "min-1",
+        "type": "min",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "min-2",
+        "type": "min",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "small-1",
+        "type": "small",
+        "seed": 11,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-2",
+        "type": "small",
+        "seed": 12,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-3",
+        "type": "small",
+        "seed": 13,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-4",
+        "type": "small",
+        "seed": 14,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-5",
+        "type": "small",
+        "seed": 15,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-6",
+        "type": "small",
+        "seed": 16,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "divisible-1",
+        "type": "divisible",
+        "seed": 51,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "divisible-2",
+        "type": "divisible",
+        "seed": 52,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "divisible-3",
+        "type": "divisible",
+        "seed": 53,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "divisible-4",
+        "type": "divisible",
+        "seed": 54,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "skew-1",
+        "type": "skew",
+        "seed": 51,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "skew-2",
+        "type": "skew",
+        "seed": 52,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "skew-3",
+        "type": "skew",
+        "seed": 53,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "skew-4",
+        "type": "skew",
+        "seed": 54,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "coprime-1",
+        "type": "coprime",
+        "seed": 51,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "coprime-2",
+        "type": "coprime",
+        "seed": 52,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "coprime-3",
+        "type": "coprime",
+        "seed": 53,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "coprime-4",
+        "type": "coprime",
+        "seed": 54,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-1",
+        "type": "large",
+        "seed": 51,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-2",
+        "type": "large",
+        "seed": 52,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-3",
+        "type": "large",
+        "seed": 53,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-4",
+        "type": "large",
+        "seed": 54,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-5",
+        "type": "large",
+        "seed": 55,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-6",
+        "type": "large",
+        "seed": 56,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "all-one",
+        "type": "all-one",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "all-zero",
+        "type": "all-zero",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    },
+    {
+      "name": "python",
+      "path": "src/solution.py",
+      "language": "python",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "global-majority",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "always-zero",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "overflow",
+      "path": "src/wrong/overflow.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

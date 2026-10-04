@@ -1,0 +1,61 @@
+\Legend
+小明有 $n$ 件衣服，第 $i$ 件衣服的保暖值为 $a_i$。他要从中带走若干件，以应对接下来 $m$ 天的天气。每天可以从带走的衣服中任选一个\textbf{非空}子集穿着；不同天可以选择不同的子集。
+
+第 $i$ 天给出 $t_i,x_i$：
+
+\begin{itemize}
+\item 如果 $t_i=1$，当天所穿衣服的保暖值之和必须\textbf{至少}为 $x_i$。
+\item 如果 $t_i=2$，当天所穿衣服的保暖值之和必须\textbf{不超过} $x_i$。
+\end{itemize}
+求能满足所有天要求的最少携带件数。若不可能，输出 $-1$。
+
+\Input
+
+第一行整数 $n$，表示衣服数。第二行 $n$ 个整数 $a_1,\ldots,a_n$。第三行整数 $m$，表示天数。接下来 $m$ 行，每行两个整数 $t_i,x_i$。
+
+保证 $1\le n\le3$，$1\le a_i\le2\times10^5$，$1\le m\le100$，$t_i\in\{1,2\}$，$1\le x_i\le10^9$。
+
+\Output
+
+输出一个整数，表示最少携带件数；无解时输出 $-1$。
+
+\Examples
+
+\begin{example}
+\exmp{3
+2 3 5
+1
+1 10}{3}
+\end{example}
+
+\begin{example}
+\exmp{3
+2 3 5
+2
+1 5
+2 2}{2}
+\end{example}
+
+\begin{example}
+\exmp{3
+7 11 13
+2
+1 24
+2 7}{3}
+\end{example}
+
+\begin{example}
+\exmp{2
+17 19
+2
+1 16
+2 18}{1}
+\end{example}
+
+\begin{example}
+\exmp{3
+2 11 19
+2
+1 1000000000
+2 1}{-1}
+\end{example}

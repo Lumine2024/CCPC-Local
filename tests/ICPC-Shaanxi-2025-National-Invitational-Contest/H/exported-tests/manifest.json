@@ -1,0 +1,108 @@
+{
+  "slug": "shaanxi-2025-h-subsequence",
+  "title": "subsequence",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:03:18 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-h-subsequence",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-h-subsequence\\exported-tests",
+  "caseCount": 12,
+  "cases": [
+    {
+      "name": "sample-1",
+      "type": "sample-1",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-1.in",
+      "answer": "sample\\sample-1.ans"
+    },
+    {
+      "name": "sample-2",
+      "type": "sample-2",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-2.in",
+      "answer": "sample\\sample-2.ans"
+    },
+    {
+      "name": "min",
+      "type": "min",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\min.in",
+      "answer": "secret\\min.ans"
+    },
+    {
+      "name": "small-1",
+      "type": "small",
+      "seed": "11",
+      "group": "secret",
+      "input": "secret\\small-1.in",
+      "answer": "secret\\small-1.ans"
+    },
+    {
+      "name": "small-2",
+      "type": "small",
+      "seed": "12",
+      "group": "secret",
+      "input": "secret\\small-2.in",
+      "answer": "secret\\small-2.ans"
+    },
+    {
+      "name": "small-3",
+      "type": "small",
+      "seed": "13",
+      "group": "secret",
+      "input": "secret\\small-3.in",
+      "answer": "secret\\small-3.ans"
+    },
+    {
+      "name": "small-4",
+      "type": "small",
+      "seed": "14",
+      "group": "secret",
+      "input": "secret\\small-4.in",
+      "answer": "secret\\small-4.ans"
+    },
+    {
+      "name": "uniform",
+      "type": "uniform",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\uniform.in",
+      "answer": "secret\\uniform.ans"
+    },
+    {
+      "name": "alternating",
+      "type": "alternating",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\alternating.in",
+      "answer": "secret\\alternating.ans"
+    },
+    {
+      "name": "all-same",
+      "type": "all-same",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\all-same.in",
+      "answer": "secret\\all-same.ans"
+    },
+    {
+      "name": "random-large-1",
+      "type": "random-large",
+      "seed": "11",
+      "group": "secret",
+      "input": "secret\\random-large-1.in",
+      "answer": "secret\\random-large-1.ans"
+    },
+    {
+      "name": "random-large-2",
+      "type": "random-large",
+      "seed": "12",
+      "group": "secret",
+      "input": "secret\\random-large-2.in",
+      "answer": "secret\\random-large-2.ans"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "slug": "shaanxi-2025-c-electronic",
+  "title": "electronic",
+  "interactive": false,
+  "timeLimitMs": 4000,
+  "memoryLimitMb": 512,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample-1",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "empty-1",
+        "type": "empty",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-1",
+        "type": "random-small",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-2",
+        "type": "random-small",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-3",
+        "type": "random-small",
+        "seed": 3,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-4",
+        "type": "random-small",
+        "seed": 4,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-5",
+        "type": "random-small",
+        "seed": 5,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-6",
+        "type": "random-small",
+        "seed": 6,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-7",
+        "type": "random-small",
+        "seed": 7,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-8",
+        "type": "random-small",
+        "seed": 8,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-9",
+        "type": "random-small",
+        "seed": 9,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-10",
+        "type": "random-small",
+        "seed": 10,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-11",
+        "type": "random-small",
+        "seed": 11,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-12",
+        "type": "random-small",
+        "seed": 12,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-13",
+        "type": "random-small",
+        "seed": 13,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-14",
+        "type": "random-small",
+        "seed": 14,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-15",
+        "type": "random-small",
+        "seed": 15,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-16",
+        "type": "random-small",
+        "seed": 16,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-17",
+        "type": "random-small",
+        "seed": 17,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-18",
+        "type": "random-small",
+        "seed": 18,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-19",
+        "type": "random-small",
+        "seed": 19,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-20",
+        "type": "random-small",
+        "seed": 20,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "path-large-1",
+        "type": "path-large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "path-large-2",
+        "type": "path-large",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "star-large-1",
+        "type": "star-large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "star-large-2",
+        "type": "star-large",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "fan-large-1",
+        "type": "fan-large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "fan-large-2",
+        "type": "fan-large",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "nested-large-1",
+        "type": "nested-large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-1",
+        "type": "random-large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "interactor": null,
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "ignores-triangles",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "unordered-count",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

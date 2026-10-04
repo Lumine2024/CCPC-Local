@@ -1,0 +1,186 @@
+{
+  "slug": "shaanxi-2025-j-message",
+  "title": "J. message",
+  "interactive": false,
+  "timeLimitMs": 1000,
+  "memoryLimitMb": 256,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "tiny-1",
+        "type": "tiny",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "tiny-2",
+        "type": "tiny",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "tiny-3",
+        "type": "tiny",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "tiny-4",
+        "type": "tiny",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "tiny-5",
+        "type": "tiny",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "all-two-1",
+        "type": "all-two",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "all-two-2",
+        "type": "all-two",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "all-two-3",
+        "type": "all-two",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "all-three-1",
+        "type": "all-three",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "all-three-2",
+        "type": "all-three",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "all-three-3",
+        "type": "all-three",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-1",
+        "type": "mixed",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-2",
+        "type": "mixed",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-3",
+        "type": "mixed",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-4",
+        "type": "mixed",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "large-1",
+        "type": "large",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "large-2",
+        "type": "large",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "large-3",
+        "type": "large",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "many-1",
+        "type": "many",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "many-2",
+        "type": "many",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "many-3",
+        "type": "many",
+        "seed": 3,
+        "group": "secret"
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "wrong-a",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "wrong-b",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "slug": "shaanxi-2025-j-message",
+  "title": "J. message",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:03:54 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-j-message",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-j-message\\exported-tests",
+  "caseCount": 22,
+  "cases": [
+    {
+      "name": "sample",
+      "type": "sample",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample.in",
+      "answer": "sample\\sample.ans"
+    },
+    {
+      "name": "tiny-1",
+      "type": "tiny",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\tiny-1.in",
+      "answer": "secret\\tiny-1.ans"
+    },
+    {
+      "name": "tiny-2",
+      "type": "tiny",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\tiny-2.in",
+      "answer": "secret\\tiny-2.ans"
+    },
+    {
+      "name": "tiny-3",
+      "type": "tiny",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\tiny-3.in",
+      "answer": "secret\\tiny-3.ans"
+    },
+    {
+      "name": "tiny-4",
+      "type": "tiny",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\tiny-4.in",
+      "answer": "secret\\tiny-4.ans"
+    },
+    {
+      "name": "tiny-5",
+      "type": "tiny",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\tiny-5.in",
+      "answer": "secret\\tiny-5.ans"
+    },
+    {
+      "name": "all-two-1",
+      "type": "all-two",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\all-two-1.in",
+      "answer": "secret\\all-two-1.ans"
+    },
+    {
+      "name": "all-two-2",
+      "type": "all-two",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\all-two-2.in",
+      "answer": "secret\\all-two-2.ans"
+    },
+    {
+      "name": "all-two-3",
+      "type": "all-two",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\all-two-3.in",
+      "answer": "secret\\all-two-3.ans"
+    },
+    {
+      "name": "all-three-1",
+      "type": "all-three",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\all-three-1.in",
+      "answer": "secret\\all-three-1.ans"
+    },
+    {
+      "name": "all-three-2",
+      "type": "all-three",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\all-three-2.in",
+      "answer": "secret\\all-three-2.ans"
+    },
+    {
+      "name": "all-three-3",
+      "type": "all-three",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\all-three-3.in",
+      "answer": "secret\\all-three-3.ans"
+    },
+    {
+      "name": "mixed-1",
+      "type": "mixed",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\mixed-1.in",
+      "answer": "secret\\mixed-1.ans"
+    },
+    {
+      "name": "mixed-2",
+      "type": "mixed",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\mixed-2.in",
+      "answer": "secret\\mixed-2.ans"
+    },
+    {
+      "name": "mixed-3",
+      "type": "mixed",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\mixed-3.in",
+      "answer": "secret\\mixed-3.ans"
+    },
+    {
+      "name": "mixed-4",
+      "type": "mixed",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\mixed-4.in",
+      "answer": "secret\\mixed-4.ans"
+    },
+    {
+      "name": "large-1",
+      "type": "large",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\large-1.in",
+      "answer": "secret\\large-1.ans"
+    },
+    {
+      "name": "large-2",
+      "type": "large",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\large-2.in",
+      "answer": "secret\\large-2.ans"
+    },
+    {
+      "name": "large-3",
+      "type": "large",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\large-3.in",
+      "answer": "secret\\large-3.ans"
+    },
+    {
+      "name": "many-1",
+      "type": "many",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\many-1.in",
+      "answer": "secret\\many-1.ans"
+    },
+    {
+      "name": "many-2",
+      "type": "many",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\many-2.in",
+      "answer": "secret\\many-2.ans"
+    },
+    {
+      "name": "many-3",
+      "type": "many",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\many-3.in",
+      "answer": "secret\\many-3.ans"
+    }
+  ]
+}

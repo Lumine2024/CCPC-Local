@@ -1,0 +1,43 @@
+{
+  "slug": "shaanxi-2025-h-subsequence",
+  "title": "subsequence",
+  "interactive": false,
+  "timeLimitMs": 6000,
+  "memoryLimitMb": 1024,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      { "name": "sample-1", "type": "sample-1", "seed": 1, "group": "sample", "checkWith": ["solution2", "python"] },
+      { "name": "sample-2", "type": "sample-2", "seed": 1, "group": "sample", "checkWith": ["solution2", "python"] },
+      { "name": "min", "type": "min", "seed": 1, "group": "secret", "checkWith": ["solution2", "python"] },
+      { "name": "small-1", "type": "small", "seed": 11, "group": "secret", "checkWith": ["solution2", "python"] },
+      { "name": "small-2", "type": "small", "seed": 12, "group": "secret", "checkWith": ["solution2", "python"] },
+      { "name": "small-3", "type": "small", "seed": 13, "group": "secret", "checkWith": ["solution2", "python"] },
+      { "name": "small-4", "type": "small", "seed": 14, "group": "secret", "checkWith": ["solution2", "python"] },
+      { "name": "uniform", "type": "uniform", "seed": 1, "group": "secret" },
+      { "name": "alternating", "type": "alternating", "seed": 2, "group": "secret" },
+      { "name": "all-same", "type": "all-same", "seed": 3, "group": "secret" },
+      { "name": "random-large-1", "type": "random-large", "seed": 11, "group": "secret" },
+      { "name": "random-large-2", "type": "random-large", "seed": 12, "group": "secret" }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": ["-std={{standard}}", "-O2", "-pipe"],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    { "name": "main", "path": "src/solution.cpp", "language": "cpp", "role": "main" },
+    { "name": "solution2", "path": "src/solution2.cpp", "language": "cpp", "role": "reference", "cases": ["sample-1", "sample-2", "min", "small-1", "small-2", "small-3", "small-4"] },
+    { "name": "python", "path": "src/solution.py", "language": "python", "role": "reference", "cases": ["sample-1", "sample-2", "min", "small-1", "small-2", "small-3", "small-4"] }
+  ],
+  "wrongSolutions": [
+    { "name": "only-pair", "path": "src/wrong/wrong-a.cpp", "language": "cpp", "expected": "fail", "cases": ["sample-2", "small-1"] },
+    { "name": "count-index-choices", "path": "src/wrong/wrong-b.cpp", "language": "cpp", "expected": "fail", "cases": ["sample-2", "small-1"] }
+  ]
+}

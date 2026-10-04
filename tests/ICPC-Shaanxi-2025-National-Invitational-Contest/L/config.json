@@ -1,0 +1,288 @@
+{
+  "slug": "shaanxi-2025-l-clothes",
+  "title": "L. clothes",
+  "interactive": false,
+  "timeLimitMs": 1000,
+  "memoryLimitMb": 256,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "sample-2",
+        "type": "sample-2",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "sample-3",
+        "type": "sample-3",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "sample-4",
+        "type": "sample-4",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "sample-5",
+        "type": "sample-5",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "single-1",
+        "type": "single",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "single-2",
+        "type": "single",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "single-3",
+        "type": "single",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "single-4",
+        "type": "single",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "single-5",
+        "type": "single",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "single-6",
+        "type": "single",
+        "seed": 6,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-1",
+        "type": "mixed",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-2",
+        "type": "mixed",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-3",
+        "type": "mixed",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-4",
+        "type": "mixed",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-5",
+        "type": "mixed",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-6",
+        "type": "mixed",
+        "seed": 6,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-7",
+        "type": "mixed",
+        "seed": 7,
+        "group": "secret"
+      },
+      {
+        "name": "mixed-8",
+        "type": "mixed",
+        "seed": 8,
+        "group": "secret"
+      },
+      {
+        "name": "random-1",
+        "type": "random",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "random-2",
+        "type": "random",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "random-3",
+        "type": "random",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "random-4",
+        "type": "random",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "random-5",
+        "type": "random",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "random-6",
+        "type": "random",
+        "seed": 6,
+        "group": "secret"
+      },
+      {
+        "name": "random-7",
+        "type": "random",
+        "seed": 7,
+        "group": "secret"
+      },
+      {
+        "name": "random-8",
+        "type": "random",
+        "seed": 8,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-1",
+        "type": "extreme",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-2",
+        "type": "extreme",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-3",
+        "type": "extreme",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-4",
+        "type": "extreme",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-5",
+        "type": "extreme",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-6",
+        "type": "extreme",
+        "seed": 6,
+        "group": "secret"
+      },
+      {
+        "name": "extreme-7",
+        "type": "extreme",
+        "seed": 7,
+        "group": "secret"
+      },
+      {
+        "name": "anti-upper-1",
+        "type": "anti-upper",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "anti-upper-2",
+        "type": "anti-upper",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "anti-upper-3",
+        "type": "anti-upper",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "anti-upper-4",
+        "type": "anti-upper",
+        "seed": 4,
+        "group": "secret"
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    },
+    {
+      "name": "python",
+      "path": "src/solution.py",
+      "language": "python",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "wrong-a",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "wrong-b",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

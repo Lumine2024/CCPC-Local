@@ -1,0 +1,343 @@
+{
+  "slug": "shaanxi-2025-e-clever-game",
+  "title": "clever game",
+  "interactive": false,
+  "timeLimitMs": 2000,
+  "memoryLimitMb": 1024,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample-1",
+        "type": "sample-1",
+        "seed": 1,
+        "group": "sample",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "sample-2",
+        "type": "sample-2",
+        "seed": 2,
+        "group": "sample",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "sample-3",
+        "type": "sample-3",
+        "seed": 3,
+        "group": "sample",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "single-1",
+        "type": "single",
+        "seed": 31,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "single-2",
+        "type": "single",
+        "seed": 32,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "single-3",
+        "type": "single",
+        "seed": 33,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "single-4",
+        "type": "single",
+        "seed": 34,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-1",
+        "type": "small",
+        "seed": 31,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-2",
+        "type": "small",
+        "seed": 32,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-3",
+        "type": "small",
+        "seed": 33,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-4",
+        "type": "small",
+        "seed": 34,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-5",
+        "type": "small",
+        "seed": 35,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-6",
+        "type": "small",
+        "seed": 36,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-7",
+        "type": "small",
+        "seed": 37,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "small-8",
+        "type": "small",
+        "seed": 38,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "chain-1",
+        "type": "chain",
+        "seed": 31,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "chain-2",
+        "type": "chain",
+        "seed": 32,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "chain-3",
+        "type": "chain",
+        "seed": 33,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "chain-4",
+        "type": "chain",
+        "seed": 34,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "mex-1",
+        "type": "mex",
+        "seed": 31,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "mex-2",
+        "type": "mex",
+        "seed": 32,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "mex-3",
+        "type": "mex",
+        "seed": 33,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "mex-4",
+        "type": "mex",
+        "seed": 34,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-1",
+        "type": "random-large",
+        "seed": 31,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-2",
+        "type": "random-large",
+        "seed": 32,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-3",
+        "type": "random-large",
+        "seed": 33,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-4",
+        "type": "random-large",
+        "seed": 34,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "layered-1",
+        "type": "layered",
+        "seed": 31,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "layered-2",
+        "type": "layered",
+        "seed": 32,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "layered-3",
+        "type": "layered",
+        "seed": 33,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "always-first",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "piece-parity",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "reverse-bit-order",
+      "path": "src/wrong/reverse-order.cpp",
+      "language": "cpp",
+      "expected": "fail",
+      "cases": [
+        "sample-1",
+        "sample-2",
+        "sample-3",
+        "small-1",
+        "small-2",
+        "small-3",
+        "small-4",
+        "small-5",
+        "small-6",
+        "small-7",
+        "small-8"
+      ]
+    }
+  ]
+}

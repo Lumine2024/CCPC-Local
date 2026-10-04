@@ -1,0 +1,116 @@
+{
+  "slug": "shaanxi-2025-d-boxes",
+  "title": "D. boxes",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:02:04 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-d-boxes",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-d-boxes\\exported-tests",
+  "caseCount": 13,
+  "cases": [
+    {
+      "name": "sample-1",
+      "type": "sample",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-1.in",
+      "answer": "sample\\sample-1.ans"
+    },
+    {
+      "name": "min-1",
+      "type": "min",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\min-1.in",
+      "answer": "secret\\min-1.ans"
+    },
+    {
+      "name": "flat-1",
+      "type": "flat",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\flat-1.in",
+      "answer": "secret\\flat-1.ans"
+    },
+    {
+      "name": "single-valley-1",
+      "type": "single-valley",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\single-valley-1.in",
+      "answer": "secret\\single-valley-1.ans"
+    },
+    {
+      "name": "nested-1",
+      "type": "nested",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\nested-1.in",
+      "answer": "secret\\nested-1.ans"
+    },
+    {
+      "name": "nested-2",
+      "type": "nested",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\nested-2.in",
+      "answer": "secret\\nested-2.ans"
+    },
+    {
+      "name": "saw-1",
+      "type": "saw",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\saw-1.in",
+      "answer": "secret\\saw-1.ans"
+    },
+    {
+      "name": "saw-2",
+      "type": "saw",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\saw-2.in",
+      "answer": "secret\\saw-2.ans"
+    },
+    {
+      "name": "random-small-1",
+      "type": "random-small",
+      "seed": "7",
+      "group": "secret",
+      "input": "secret\\random-small-1.in",
+      "answer": "secret\\random-small-1.ans"
+    },
+    {
+      "name": "random-small-2",
+      "type": "random-small",
+      "seed": "19",
+      "group": "secret",
+      "input": "secret\\random-small-2.in",
+      "answer": "secret\\random-small-2.ans"
+    },
+    {
+      "name": "random-large-1",
+      "type": "random-large",
+      "seed": "11",
+      "group": "secret",
+      "input": "secret\\random-large-1.in",
+      "answer": "secret\\random-large-1.ans"
+    },
+    {
+      "name": "random-large-2",
+      "type": "random-large",
+      "seed": "23",
+      "group": "secret",
+      "input": "secret\\random-large-2.in",
+      "answer": "secret\\random-large-2.ans"
+    },
+    {
+      "name": "max-1",
+      "type": "max",
+      "seed": "13",
+      "group": "secret",
+      "input": "secret\\max-1.in",
+      "answer": "secret\\max-1.ans"
+    }
+  ]
+}

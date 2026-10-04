@@ -1,0 +1,226 @@
+{
+  "slug": "shaanxi-2025-i-news",
+  "title": "I. news",
+  "interactive": false,
+  "timeLimitMs": 1000,
+  "memoryLimitMb": 256,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample"
+      },
+      {
+        "name": "boundary-1",
+        "type": "boundary",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "boundary-2",
+        "type": "boundary",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "boundary-3",
+        "type": "boundary",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "boundary-4",
+        "type": "boundary",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "boundary-5",
+        "type": "boundary",
+        "seed": 5,
+        "group": "secret"
+      },
+      {
+        "name": "boundary-6",
+        "type": "boundary",
+        "seed": 6,
+        "group": "secret"
+      },
+      {
+        "name": "small-1",
+        "type": "small",
+        "seed": 1,
+        "group": "secret"
+      },
+      {
+        "name": "small-2",
+        "type": "small",
+        "seed": 2,
+        "group": "secret"
+      },
+      {
+        "name": "small-3",
+        "type": "small",
+        "seed": 3,
+        "group": "secret"
+      },
+      {
+        "name": "small-4",
+        "type": "small",
+        "seed": 4,
+        "group": "secret"
+      },
+      {
+        "name": "large-1",
+        "type": "large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "large-2",
+        "type": "large",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "large-3",
+        "type": "large",
+        "seed": 3,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "large-4",
+        "type": "large",
+        "seed": 4,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "large-5",
+        "type": "large",
+        "seed": 5,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "large-6",
+        "type": "large",
+        "seed": 6,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "maximum-1",
+        "type": "maximum",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "maximum-2",
+        "type": "maximum",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "maximum-3",
+        "type": "maximum",
+        "seed": 3,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "maximum-4",
+        "type": "maximum",
+        "seed": 4,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "maximum-5",
+        "type": "maximum",
+        "seed": 5,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    },
+    {
+      "name": "python",
+      "path": "src/solution.py",
+      "language": "python",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "wrong-a",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "wrong-b",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

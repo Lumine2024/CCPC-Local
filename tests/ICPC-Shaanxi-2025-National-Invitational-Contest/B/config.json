@@ -1,0 +1,352 @@
+{
+  "slug": "shaanxi-2025-b-lcm-gifts",
+  "title": "LCM Gifts",
+  "interactive": false,
+  "timeLimitMs": 1500,
+  "memoryLimitMb": 512,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample-1",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "min-1",
+        "type": "min",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "distributed-1",
+        "type": "distributed",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "single-duplicate-1",
+        "type": "single-duplicate",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "single-duplicate-2",
+        "type": "single-duplicate",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "all-ones-1",
+        "type": "all-ones",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "all-ones-2",
+        "type": "all-ones",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "powers-1",
+        "type": "powers",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "powers-2",
+        "type": "powers",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "cycling-1",
+        "type": "cycling",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "cycling-2",
+        "type": "cycling",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "divisibility-1",
+        "type": "divisibility",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "divisibility-2",
+        "type": "divisibility",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "distinct-prime-1",
+        "type": "distinct-prime",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "distinct-prime-2",
+        "type": "distinct-prime",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "almost-unique-1",
+        "type": "almost-unique",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "almost-unique-2",
+        "type": "almost-unique",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-1",
+        "type": "random-small",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-2",
+        "type": "random-small",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-3",
+        "type": "random-small",
+        "seed": 3,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-4",
+        "type": "random-small",
+        "seed": 4,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-5",
+        "type": "random-small",
+        "seed": 5,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-6",
+        "type": "random-small",
+        "seed": 6,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-7",
+        "type": "random-small",
+        "seed": 7,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-small-8",
+        "type": "random-small",
+        "seed": 8,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-1",
+        "type": "random-large",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-2",
+        "type": "random-large",
+        "seed": 2,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-3",
+        "type": "random-large",
+        "seed": 3,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-4",
+        "type": "random-large",
+        "seed": 4,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-5",
+        "type": "random-large",
+        "seed": 5,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-6",
+        "type": "random-large",
+        "seed": 6,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-7",
+        "type": "random-large",
+        "seed": 7,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "random-large-8",
+        "type": "random-large",
+        "seed": 8,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "interactor": null,
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "duplicates-only",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "divisible-pair",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "checks": [
+    "Launcher, lobby masking, VP start",
+    "Offline Markdown, LaTeX, five sample pairs, exact copy",
+    "D and I relative illustration assets",
+    "Uploaded C++ main solution: 38 cases, real AC, no runtime or memory API fields",
+    "Refresh preserves session, hidden AC aggregated into Other, locate team",
+    "390px mobile home and board: no document overflow",
+    "Only loopback network requests; no browser console errors"
+  ],
+  "console_errors": []
+}

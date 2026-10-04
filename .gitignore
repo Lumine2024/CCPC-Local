@@ -1,0 +1,9 @@
+# python binaries
+.venv/
+__pycache__/
+*.pyc
+
+# temp files
+bin/
+tmp/
+

@@ -1,0 +1,252 @@
+{
+  "slug": "shaanxi-2025-m-kingdom",
+  "title": "kingdom",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:04:51 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-m-kingdom",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-m-kingdom\\exported-tests",
+  "caseCount": 30,
+  "cases": [
+    {
+      "name": "sample-1",
+      "type": "sample",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-1.in",
+      "answer": "sample\\sample-1.ans"
+    },
+    {
+      "name": "min-1",
+      "type": "min",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\min-1.in",
+      "answer": "secret\\min-1.ans"
+    },
+    {
+      "name": "tie-1",
+      "type": "tie",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\tie-1.in",
+      "answer": "secret\\tie-1.ans"
+    },
+    {
+      "name": "random-small-1",
+      "type": "random-small",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\random-small-1.in",
+      "answer": "secret\\random-small-1.ans"
+    },
+    {
+      "name": "random-small-2",
+      "type": "random-small",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\random-small-2.in",
+      "answer": "secret\\random-small-2.ans"
+    },
+    {
+      "name": "random-small-3",
+      "type": "random-small",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\random-small-3.in",
+      "answer": "secret\\random-small-3.ans"
+    },
+    {
+      "name": "random-small-4",
+      "type": "random-small",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\random-small-4.in",
+      "answer": "secret\\random-small-4.ans"
+    },
+    {
+      "name": "random-small-5",
+      "type": "random-small",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\random-small-5.in",
+      "answer": "secret\\random-small-5.ans"
+    },
+    {
+      "name": "random-small-6",
+      "type": "random-small",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\random-small-6.in",
+      "answer": "secret\\random-small-6.ans"
+    },
+    {
+      "name": "random-small-7",
+      "type": "random-small",
+      "seed": "7",
+      "group": "secret",
+      "input": "secret\\random-small-7.in",
+      "answer": "secret\\random-small-7.ans"
+    },
+    {
+      "name": "random-small-8",
+      "type": "random-small",
+      "seed": "8",
+      "group": "secret",
+      "input": "secret\\random-small-8.in",
+      "answer": "secret\\random-small-8.ans"
+    },
+    {
+      "name": "random-small-9",
+      "type": "random-small",
+      "seed": "9",
+      "group": "secret",
+      "input": "secret\\random-small-9.in",
+      "answer": "secret\\random-small-9.ans"
+    },
+    {
+      "name": "random-small-10",
+      "type": "random-small",
+      "seed": "10",
+      "group": "secret",
+      "input": "secret\\random-small-10.in",
+      "answer": "secret\\random-small-10.ans"
+    },
+    {
+      "name": "random-small-11",
+      "type": "random-small",
+      "seed": "11",
+      "group": "secret",
+      "input": "secret\\random-small-11.in",
+      "answer": "secret\\random-small-11.ans"
+    },
+    {
+      "name": "random-small-12",
+      "type": "random-small",
+      "seed": "12",
+      "group": "secret",
+      "input": "secret\\random-small-12.in",
+      "answer": "secret\\random-small-12.ans"
+    },
+    {
+      "name": "random-small-13",
+      "type": "random-small",
+      "seed": "13",
+      "group": "secret",
+      "input": "secret\\random-small-13.in",
+      "answer": "secret\\random-small-13.ans"
+    },
+    {
+      "name": "random-small-14",
+      "type": "random-small",
+      "seed": "14",
+      "group": "secret",
+      "input": "secret\\random-small-14.in",
+      "answer": "secret\\random-small-14.ans"
+    },
+    {
+      "name": "random-small-15",
+      "type": "random-small",
+      "seed": "15",
+      "group": "secret",
+      "input": "secret\\random-small-15.in",
+      "answer": "secret\\random-small-15.ans"
+    },
+    {
+      "name": "random-small-16",
+      "type": "random-small",
+      "seed": "16",
+      "group": "secret",
+      "input": "secret\\random-small-16.in",
+      "answer": "secret\\random-small-16.ans"
+    },
+    {
+      "name": "random-small-17",
+      "type": "random-small",
+      "seed": "17",
+      "group": "secret",
+      "input": "secret\\random-small-17.in",
+      "answer": "secret\\random-small-17.ans"
+    },
+    {
+      "name": "star-large-1",
+      "type": "star-large",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\star-large-1.in",
+      "answer": "secret\\star-large-1.ans"
+    },
+    {
+      "name": "star-large-2",
+      "type": "star-large",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\star-large-2.in",
+      "answer": "secret\\star-large-2.ans"
+    },
+    {
+      "name": "chain-one-capital-1",
+      "type": "chain-one-capital",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\chain-one-capital-1.in",
+      "answer": "secret\\chain-one-capital-1.ans"
+    },
+    {
+      "name": "chain-one-capital-2",
+      "type": "chain-one-capital",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\chain-one-capital-2.in",
+      "answer": "secret\\chain-one-capital-2.ans"
+    },
+    {
+      "name": "two-capitals-1",
+      "type": "two-capitals",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\two-capitals-1.in",
+      "answer": "secret\\two-capitals-1.ans"
+    },
+    {
+      "name": "two-capitals-2",
+      "type": "two-capitals",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\two-capitals-2.in",
+      "answer": "secret\\two-capitals-2.ans"
+    },
+    {
+      "name": "binary-large-1",
+      "type": "binary-large",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\binary-large-1.in",
+      "answer": "secret\\binary-large-1.ans"
+    },
+    {
+      "name": "binary-large-2",
+      "type": "binary-large",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\binary-large-2.in",
+      "answer": "secret\\binary-large-2.ans"
+    },
+    {
+      "name": "random-large-1",
+      "type": "random-large",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\random-large-1.in",
+      "answer": "secret\\random-large-1.ans"
+    },
+    {
+      "name": "random-large-2",
+      "type": "random-large",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\random-large-2.in",
+      "answer": "secret\\random-large-2.ans"
+    }
+  ]
+}

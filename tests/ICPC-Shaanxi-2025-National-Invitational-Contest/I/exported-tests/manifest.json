@@ -1,0 +1,188 @@
+{
+  "slug": "shaanxi-2025-i-news",
+  "title": "I. news",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:03:35 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-i-news",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-i-news\\exported-tests",
+  "caseCount": 22,
+  "cases": [
+    {
+      "name": "sample",
+      "type": "sample",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample.in",
+      "answer": "sample\\sample.ans"
+    },
+    {
+      "name": "boundary-1",
+      "type": "boundary",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\boundary-1.in",
+      "answer": "secret\\boundary-1.ans"
+    },
+    {
+      "name": "boundary-2",
+      "type": "boundary",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\boundary-2.in",
+      "answer": "secret\\boundary-2.ans"
+    },
+    {
+      "name": "boundary-3",
+      "type": "boundary",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\boundary-3.in",
+      "answer": "secret\\boundary-3.ans"
+    },
+    {
+      "name": "boundary-4",
+      "type": "boundary",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\boundary-4.in",
+      "answer": "secret\\boundary-4.ans"
+    },
+    {
+      "name": "boundary-5",
+      "type": "boundary",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\boundary-5.in",
+      "answer": "secret\\boundary-5.ans"
+    },
+    {
+      "name": "boundary-6",
+      "type": "boundary",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\boundary-6.in",
+      "answer": "secret\\boundary-6.ans"
+    },
+    {
+      "name": "small-1",
+      "type": "small",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\small-1.in",
+      "answer": "secret\\small-1.ans"
+    },
+    {
+      "name": "small-2",
+      "type": "small",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\small-2.in",
+      "answer": "secret\\small-2.ans"
+    },
+    {
+      "name": "small-3",
+      "type": "small",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\small-3.in",
+      "answer": "secret\\small-3.ans"
+    },
+    {
+      "name": "small-4",
+      "type": "small",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\small-4.in",
+      "answer": "secret\\small-4.ans"
+    },
+    {
+      "name": "large-1",
+      "type": "large",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\large-1.in",
+      "answer": "secret\\large-1.ans"
+    },
+    {
+      "name": "large-2",
+      "type": "large",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\large-2.in",
+      "answer": "secret\\large-2.ans"
+    },
+    {
+      "name": "large-3",
+      "type": "large",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\large-3.in",
+      "answer": "secret\\large-3.ans"
+    },
+    {
+      "name": "large-4",
+      "type": "large",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\large-4.in",
+      "answer": "secret\\large-4.ans"
+    },
+    {
+      "name": "large-5",
+      "type": "large",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\large-5.in",
+      "answer": "secret\\large-5.ans"
+    },
+    {
+      "name": "large-6",
+      "type": "large",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\large-6.in",
+      "answer": "secret\\large-6.ans"
+    },
+    {
+      "name": "maximum-1",
+      "type": "maximum",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\maximum-1.in",
+      "answer": "secret\\maximum-1.ans"
+    },
+    {
+      "name": "maximum-2",
+      "type": "maximum",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\maximum-2.in",
+      "answer": "secret\\maximum-2.ans"
+    },
+    {
+      "name": "maximum-3",
+      "type": "maximum",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\maximum-3.in",
+      "answer": "secret\\maximum-3.ans"
+    },
+    {
+      "name": "maximum-4",
+      "type": "maximum",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\maximum-4.in",
+      "answer": "secret\\maximum-4.ans"
+    },
+    {
+      "name": "maximum-5",
+      "type": "maximum",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\maximum-5.in",
+      "answer": "secret\\maximum-5.ans"
+    }
+  ]
+}

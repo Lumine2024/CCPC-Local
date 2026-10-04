@@ -1,0 +1,20 @@
+[
+  {
+    "package": "marked",
+    "version": "15.0.12",
+    "source": "https://registry.npmjs.org/marked/-/marked-15.0.12.tgz",
+    "integrity": "sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA=="
+  },
+  {
+    "package": "dompurify",
+    "version": "3.3.1",
+    "source": "https://registry.npmjs.org/dompurify/-/dompurify-3.3.1.tgz",
+    "integrity": "sha512-qkdCKzLNtrgPFP1Vo+98FRzJnBRGe4ffyCea9IwHB1fyxPOeNTHpLKYGd4Uk9xvNoH0ZoOjwZxNptyMwqrId1Q=="
+  },
+  {
+    "package": "katex",
+    "version": "0.16.33",
+    "source": "https://registry.npmjs.org/katex/-/katex-0.16.33.tgz",
+    "integrity": "sha512-q3N5u+1sY9Bu7T4nlXoiRBXWfwSefNGoKeOwekV+gw0cAXQlz2Ww6BLcmBxVDeXBMUDQv6fK5bcNaJLxob3ZQA=="
+  }
+]

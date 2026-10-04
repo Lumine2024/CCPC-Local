@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>五种合法的箱子摆放方式</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: #243140; font: 17px system-ui, sans-serif; }
+  main { width: 1140px; padding: 22px 30px 26px; }
+  h1 { margin: 0 0 5px; font-size: 24px; }
+  p { margin: 0 0 15px; color: #506173; }
+  .gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  figure { margin: 0; padding: 12px 10px 10px; border: 1px solid #d8e0e7; border-radius: 8px; }
+  figcaption { text-align: center; margin-bottom: 10px; font-weight: 650; }
+  .grid { display: grid; grid-template-columns: repeat(6, 25px); grid-template-rows: repeat(10, 25px); gap: 1px; justify-content: center; }
+  .cell { width: 25px; height: 25px; }
+  .shelf, .box { border: 1px solid #56616c; border-radius: 2px; }
+  .shelf { background: #b9c5ce; box-shadow: inset 0 3px 0 #e2e9ed; }
+  .box { background: #263746; position: relative; }
+  .box::before, .box::after { content: ''; position: absolute; top: 10px; left: 2px; width: 19px; height: 3px; background: #f6d987; transform: rotate(45deg); }
+  .box::after { transform: rotate(-45deg); }
+  .heights { text-align: center; margin-top: 10px; font-size: 13px; color: #506173; white-space: nowrap; }
+  .legend { display: flex; justify-content: center; gap: 22px; margin-top: 16px; color: #425365; }
+  .swatch { display: inline-block; width: 18px; height: 18px; vertical-align: -4px; margin-right: 5px; border: 1px solid #56616c; }
+  .swatch.shelf { background: #b9c5ce; }
+  .swatch.box { background: #263746; }
+</style>
+<main>
+  <h1>样例中的五种合法摆放</h1>
+  <p>原货架高度为 (5, 1, 6, 1)，两侧灰色列表示足够高的边界。每幅图恰好有 6 个带 X 的箱子。</p>
+  <div class="gallery" id="gallery"></div>
+  <div class="legend"><span><i class="swatch shelf"></i>原货架</span><span><i class="swatch box"></i>新放的箱子</span></div>
+</main>
+<script>
+  const original = [10, 5, 1, 6, 1, 10];
+  const placements = [
+    [10, 6, 6, 6, 1, 10],
+    [10, 5, 5, 6, 3, 10],
+    [10, 5, 4, 6, 4, 10],
+    [10, 5, 3, 6, 5, 10],
+    [10, 5, 2, 6, 6, 10],
+  ];
+  const gallery = document.getElementById('gallery');
+  placements.forEach((heights, index) => {
+    const figure = document.createElement('figure');
+    figure.innerHTML = `<figcaption>摆法 ${index + 1}</figcaption><div class="grid"></div><div class="heights">摆放后列高：${heights.slice(1, 5).join(', ')}</div>`;
+    const grid = figure.querySelector('.grid');
+    for (let y = 10; y >= 1; y--) {
+      for (let x = 0; x < 6; x++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell' + (y <= original[x] ? ' shelf' : y <= heights[x] ? ' box' : '');
+        grid.appendChild(cell);
+      }
+    }
+    gallery.appendChild(figure);
+  });
+</script>
+</html>

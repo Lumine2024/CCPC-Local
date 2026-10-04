@@ -1,0 +1,316 @@
+{
+  "slug": "shaanxi-2025-l-clothes",
+  "title": "L. clothes",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:04:36 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-l-clothes",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-l-clothes\\exported-tests",
+  "caseCount": 38,
+  "cases": [
+    {
+      "name": "sample",
+      "type": "sample",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample.in",
+      "answer": "sample\\sample.ans"
+    },
+    {
+      "name": "sample-2",
+      "type": "sample-2",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-2.in",
+      "answer": "sample\\sample-2.ans"
+    },
+    {
+      "name": "sample-3",
+      "type": "sample-3",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-3.in",
+      "answer": "sample\\sample-3.ans"
+    },
+    {
+      "name": "sample-4",
+      "type": "sample-4",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-4.in",
+      "answer": "sample\\sample-4.ans"
+    },
+    {
+      "name": "sample-5",
+      "type": "sample-5",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-5.in",
+      "answer": "sample\\sample-5.ans"
+    },
+    {
+      "name": "single-1",
+      "type": "single",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\single-1.in",
+      "answer": "secret\\single-1.ans"
+    },
+    {
+      "name": "single-2",
+      "type": "single",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\single-2.in",
+      "answer": "secret\\single-2.ans"
+    },
+    {
+      "name": "single-3",
+      "type": "single",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\single-3.in",
+      "answer": "secret\\single-3.ans"
+    },
+    {
+      "name": "single-4",
+      "type": "single",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\single-4.in",
+      "answer": "secret\\single-4.ans"
+    },
+    {
+      "name": "single-5",
+      "type": "single",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\single-5.in",
+      "answer": "secret\\single-5.ans"
+    },
+    {
+      "name": "single-6",
+      "type": "single",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\single-6.in",
+      "answer": "secret\\single-6.ans"
+    },
+    {
+      "name": "mixed-1",
+      "type": "mixed",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\mixed-1.in",
+      "answer": "secret\\mixed-1.ans"
+    },
+    {
+      "name": "mixed-2",
+      "type": "mixed",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\mixed-2.in",
+      "answer": "secret\\mixed-2.ans"
+    },
+    {
+      "name": "mixed-3",
+      "type": "mixed",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\mixed-3.in",
+      "answer": "secret\\mixed-3.ans"
+    },
+    {
+      "name": "mixed-4",
+      "type": "mixed",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\mixed-4.in",
+      "answer": "secret\\mixed-4.ans"
+    },
+    {
+      "name": "mixed-5",
+      "type": "mixed",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\mixed-5.in",
+      "answer": "secret\\mixed-5.ans"
+    },
+    {
+      "name": "mixed-6",
+      "type": "mixed",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\mixed-6.in",
+      "answer": "secret\\mixed-6.ans"
+    },
+    {
+      "name": "mixed-7",
+      "type": "mixed",
+      "seed": "7",
+      "group": "secret",
+      "input": "secret\\mixed-7.in",
+      "answer": "secret\\mixed-7.ans"
+    },
+    {
+      "name": "mixed-8",
+      "type": "mixed",
+      "seed": "8",
+      "group": "secret",
+      "input": "secret\\mixed-8.in",
+      "answer": "secret\\mixed-8.ans"
+    },
+    {
+      "name": "random-1",
+      "type": "random",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\random-1.in",
+      "answer": "secret\\random-1.ans"
+    },
+    {
+      "name": "random-2",
+      "type": "random",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\random-2.in",
+      "answer": "secret\\random-2.ans"
+    },
+    {
+      "name": "random-3",
+      "type": "random",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\random-3.in",
+      "answer": "secret\\random-3.ans"
+    },
+    {
+      "name": "random-4",
+      "type": "random",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\random-4.in",
+      "answer": "secret\\random-4.ans"
+    },
+    {
+      "name": "random-5",
+      "type": "random",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\random-5.in",
+      "answer": "secret\\random-5.ans"
+    },
+    {
+      "name": "random-6",
+      "type": "random",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\random-6.in",
+      "answer": "secret\\random-6.ans"
+    },
+    {
+      "name": "random-7",
+      "type": "random",
+      "seed": "7",
+      "group": "secret",
+      "input": "secret\\random-7.in",
+      "answer": "secret\\random-7.ans"
+    },
+    {
+      "name": "random-8",
+      "type": "random",
+      "seed": "8",
+      "group": "secret",
+      "input": "secret\\random-8.in",
+      "answer": "secret\\random-8.ans"
+    },
+    {
+      "name": "extreme-1",
+      "type": "extreme",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\extreme-1.in",
+      "answer": "secret\\extreme-1.ans"
+    },
+    {
+      "name": "extreme-2",
+      "type": "extreme",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\extreme-2.in",
+      "answer": "secret\\extreme-2.ans"
+    },
+    {
+      "name": "extreme-3",
+      "type": "extreme",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\extreme-3.in",
+      "answer": "secret\\extreme-3.ans"
+    },
+    {
+      "name": "extreme-4",
+      "type": "extreme",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\extreme-4.in",
+      "answer": "secret\\extreme-4.ans"
+    },
+    {
+      "name": "extreme-5",
+      "type": "extreme",
+      "seed": "5",
+      "group": "secret",
+      "input": "secret\\extreme-5.in",
+      "answer": "secret\\extreme-5.ans"
+    },
+    {
+      "name": "extreme-6",
+      "type": "extreme",
+      "seed": "6",
+      "group": "secret",
+      "input": "secret\\extreme-6.in",
+      "answer": "secret\\extreme-6.ans"
+    },
+    {
+      "name": "extreme-7",
+      "type": "extreme",
+      "seed": "7",
+      "group": "secret",
+      "input": "secret\\extreme-7.in",
+      "answer": "secret\\extreme-7.ans"
+    },
+    {
+      "name": "anti-upper-1",
+      "type": "anti-upper",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\anti-upper-1.in",
+      "answer": "secret\\anti-upper-1.ans"
+    },
+    {
+      "name": "anti-upper-2",
+      "type": "anti-upper",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\anti-upper-2.in",
+      "answer": "secret\\anti-upper-2.ans"
+    },
+    {
+      "name": "anti-upper-3",
+      "type": "anti-upper",
+      "seed": "3",
+      "group": "secret",
+      "input": "secret\\anti-upper-3.in",
+      "answer": "secret\\anti-upper-3.ans"
+    },
+    {
+      "name": "anti-upper-4",
+      "type": "anti-upper",
+      "seed": "4",
+      "group": "secret",
+      "input": "secret\\anti-upper-4.in",
+      "answer": "secret\\anti-upper-4.ans"
+    }
+  ]
+}

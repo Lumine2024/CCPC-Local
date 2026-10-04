@@ -1,0 +1,252 @@
+{
+  "slug": "shaanxi-2025-g-juan",
+  "title": "Juan",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:02:59 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-g-juan",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-g-juan\\exported-tests",
+  "caseCount": 30,
+  "cases": [
+    {
+      "name": "sample-1",
+      "type": "sample-1",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-1.in",
+      "answer": "sample\\sample-1.ans"
+    },
+    {
+      "name": "sample-2",
+      "type": "sample-2",
+      "seed": "2",
+      "group": "sample",
+      "input": "sample\\sample-2.in",
+      "answer": "sample\\sample-2.ans"
+    },
+    {
+      "name": "min-1",
+      "type": "min",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\min-1.in",
+      "answer": "secret\\min-1.ans"
+    },
+    {
+      "name": "min-2",
+      "type": "min",
+      "seed": "2",
+      "group": "secret",
+      "input": "secret\\min-2.in",
+      "answer": "secret\\min-2.ans"
+    },
+    {
+      "name": "small-1",
+      "type": "small",
+      "seed": "11",
+      "group": "secret",
+      "input": "secret\\small-1.in",
+      "answer": "secret\\small-1.ans"
+    },
+    {
+      "name": "small-2",
+      "type": "small",
+      "seed": "12",
+      "group": "secret",
+      "input": "secret\\small-2.in",
+      "answer": "secret\\small-2.ans"
+    },
+    {
+      "name": "small-3",
+      "type": "small",
+      "seed": "13",
+      "group": "secret",
+      "input": "secret\\small-3.in",
+      "answer": "secret\\small-3.ans"
+    },
+    {
+      "name": "small-4",
+      "type": "small",
+      "seed": "14",
+      "group": "secret",
+      "input": "secret\\small-4.in",
+      "answer": "secret\\small-4.ans"
+    },
+    {
+      "name": "small-5",
+      "type": "small",
+      "seed": "15",
+      "group": "secret",
+      "input": "secret\\small-5.in",
+      "answer": "secret\\small-5.ans"
+    },
+    {
+      "name": "small-6",
+      "type": "small",
+      "seed": "16",
+      "group": "secret",
+      "input": "secret\\small-6.in",
+      "answer": "secret\\small-6.ans"
+    },
+    {
+      "name": "divisible-1",
+      "type": "divisible",
+      "seed": "51",
+      "group": "secret",
+      "input": "secret\\divisible-1.in",
+      "answer": "secret\\divisible-1.ans"
+    },
+    {
+      "name": "divisible-2",
+      "type": "divisible",
+      "seed": "52",
+      "group": "secret",
+      "input": "secret\\divisible-2.in",
+      "answer": "secret\\divisible-2.ans"
+    },
+    {
+      "name": "divisible-3",
+      "type": "divisible",
+      "seed": "53",
+      "group": "secret",
+      "input": "secret\\divisible-3.in",
+      "answer": "secret\\divisible-3.ans"
+    },
+    {
+      "name": "divisible-4",
+      "type": "divisible",
+      "seed": "54",
+      "group": "secret",
+      "input": "secret\\divisible-4.in",
+      "answer": "secret\\divisible-4.ans"
+    },
+    {
+      "name": "skew-1",
+      "type": "skew",
+      "seed": "51",
+      "group": "secret",
+      "input": "secret\\skew-1.in",
+      "answer": "secret\\skew-1.ans"
+    },
+    {
+      "name": "skew-2",
+      "type": "skew",
+      "seed": "52",
+      "group": "secret",
+      "input": "secret\\skew-2.in",
+      "answer": "secret\\skew-2.ans"
+    },
+    {
+      "name": "skew-3",
+      "type": "skew",
+      "seed": "53",
+      "group": "secret",
+      "input": "secret\\skew-3.in",
+      "answer": "secret\\skew-3.ans"
+    },
+    {
+      "name": "skew-4",
+      "type": "skew",
+      "seed": "54",
+      "group": "secret",
+      "input": "secret\\skew-4.in",
+      "answer": "secret\\skew-4.ans"
+    },
+    {
+      "name": "coprime-1",
+      "type": "coprime",
+      "seed": "51",
+      "group": "secret",
+      "input": "secret\\coprime-1.in",
+      "answer": "secret\\coprime-1.ans"
+    },
+    {
+      "name": "coprime-2",
+      "type": "coprime",
+      "seed": "52",
+      "group": "secret",
+      "input": "secret\\coprime-2.in",
+      "answer": "secret\\coprime-2.ans"
+    },
+    {
+      "name": "coprime-3",
+      "type": "coprime",
+      "seed": "53",
+      "group": "secret",
+      "input": "secret\\coprime-3.in",
+      "answer": "secret\\coprime-3.ans"
+    },
+    {
+      "name": "coprime-4",
+      "type": "coprime",
+      "seed": "54",
+      "group": "secret",
+      "input": "secret\\coprime-4.in",
+      "answer": "secret\\coprime-4.ans"
+    },
+    {
+      "name": "large-1",
+      "type": "large",
+      "seed": "51",
+      "group": "secret",
+      "input": "secret\\large-1.in",
+      "answer": "secret\\large-1.ans"
+    },
+    {
+      "name": "large-2",
+      "type": "large",
+      "seed": "52",
+      "group": "secret",
+      "input": "secret\\large-2.in",
+      "answer": "secret\\large-2.ans"
+    },
+    {
+      "name": "large-3",
+      "type": "large",
+      "seed": "53",
+      "group": "secret",
+      "input": "secret\\large-3.in",
+      "answer": "secret\\large-3.ans"
+    },
+    {
+      "name": "large-4",
+      "type": "large",
+      "seed": "54",
+      "group": "secret",
+      "input": "secret\\large-4.in",
+      "answer": "secret\\large-4.ans"
+    },
+    {
+      "name": "large-5",
+      "type": "large",
+      "seed": "55",
+      "group": "secret",
+      "input": "secret\\large-5.in",
+      "answer": "secret\\large-5.ans"
+    },
+    {
+      "name": "large-6",
+      "type": "large",
+      "seed": "56",
+      "group": "secret",
+      "input": "secret\\large-6.in",
+      "answer": "secret\\large-6.ans"
+    },
+    {
+      "name": "all-one",
+      "type": "all-one",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\all-one.in",
+      "answer": "secret\\all-one.ans"
+    },
+    {
+      "name": "all-zero",
+      "type": "all-zero",
+      "seed": "1",
+      "group": "secret",
+      "input": "secret\\all-zero.in",
+      "answer": "secret\\all-zero.ans"
+    }
+  ]
+}

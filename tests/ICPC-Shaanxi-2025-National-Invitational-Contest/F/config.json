@@ -1,0 +1,348 @@
+{
+  "slug": "shaanxi-2025-f-drink",
+  "title": "Drink",
+  "interactive": false,
+  "timeLimitMs": 1000,
+  "memoryLimitMb": 512,
+  "standard": "gnu++20",
+  "statement": "docs/statement.md",
+  "tutorial": "docs/tutorial.md",
+  "validator": "src/validator/validator.cpp",
+  "generator": {
+    "path": "src/generator/generator.cpp",
+    "cases": [
+      {
+        "name": "sample",
+        "type": "sample",
+        "seed": 1,
+        "group": "sample",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "min",
+        "type": "min",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "one-high",
+        "type": "one-high",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "high-one",
+        "type": "high-one",
+        "seed": 1,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-1",
+        "type": "small",
+        "seed": 22,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-2",
+        "type": "small",
+        "seed": 23,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-3",
+        "type": "small",
+        "seed": 24,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-4",
+        "type": "small",
+        "seed": 25,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-5",
+        "type": "small",
+        "seed": 26,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-6",
+        "type": "small",
+        "seed": 27,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-7",
+        "type": "small",
+        "seed": 28,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "small-8",
+        "type": "small",
+        "seed": 29,
+        "group": "secret",
+        "checkWith": [
+          "solution2",
+          "python"
+        ]
+      },
+      {
+        "name": "ones-1",
+        "type": "ones",
+        "seed": 22,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "ones-2",
+        "type": "ones",
+        "seed": 23,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "ones-3",
+        "type": "ones",
+        "seed": 24,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "ones-4",
+        "type": "ones",
+        "seed": 25,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "alternating-1",
+        "type": "alternating",
+        "seed": 22,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "alternating-2",
+        "type": "alternating",
+        "seed": 23,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "equal-high-1",
+        "type": "equal-high",
+        "seed": 22,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "equal-high-2",
+        "type": "equal-high",
+        "seed": 23,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "max-random-1",
+        "type": "max-random",
+        "seed": 22,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "max-random-2",
+        "type": "max-random",
+        "seed": 23,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "max-random-3",
+        "type": "max-random",
+        "seed": 24,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "max-random-4",
+        "type": "max-random",
+        "seed": 25,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "max-random-5",
+        "type": "max-random",
+        "seed": 26,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "max-random-6",
+        "type": "max-random",
+        "seed": 27,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "near-max-1",
+        "type": "near-max",
+        "seed": 22,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "near-max-2",
+        "type": "near-max",
+        "seed": 23,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "near-max-3",
+        "type": "near-max",
+        "seed": 24,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      },
+      {
+        "name": "near-max-4",
+        "type": "near-max",
+        "seed": 25,
+        "group": "secret",
+        "checkWith": [
+          "solution2"
+        ]
+      }
+    ]
+  },
+  "checker": "src/checker/checker.cpp",
+  "build": {
+    "cppCompiler": "g++",
+    "cppFlags": [
+      "-std={{standard}}",
+      "-O2",
+      "-pipe"
+    ],
+    "pythonCommand": "python"
+  },
+  "solutions": [
+    {
+      "name": "main",
+      "path": "src/solution.cpp",
+      "language": "cpp",
+      "role": "main"
+    },
+    {
+      "name": "solution2",
+      "path": "src/solution2.cpp",
+      "language": "cpp",
+      "role": "reference"
+    },
+    {
+      "name": "python",
+      "path": "src/solution.py",
+      "language": "python",
+      "role": "reference"
+    }
+  ],
+  "wrongSolutions": [
+    {
+      "name": "stop-after-dazed",
+      "path": "src/wrong/wrong-a.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "keep-rolling",
+      "path": "src/wrong/wrong-b.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    },
+    {
+      "name": "integer-division",
+      "path": "src/wrong/int-division.cpp",
+      "language": "cpp",
+      "expected": "fail"
+    }
+  ]
+}

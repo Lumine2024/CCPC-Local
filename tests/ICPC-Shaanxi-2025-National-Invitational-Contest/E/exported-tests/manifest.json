@@ -1,0 +1,252 @@
+{
+  "slug": "shaanxi-2025-e-clever-game",
+  "title": "clever game",
+  "interactive": false,
+  "exportMode": "static",
+  "exportedAt": "2026-09-18 12:02:24 +08:00",
+  "workspace": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-e-clever-game",
+  "outputRoot": "C:\\Users\\123\\.claude\\skills\\icpc-problem-creator\\examples\\shaanxi-2025-e-clever-game\\exported-tests",
+  "caseCount": 30,
+  "cases": [
+    {
+      "name": "sample-1",
+      "type": "sample-1",
+      "seed": "1",
+      "group": "sample",
+      "input": "sample\\sample-1.in",
+      "answer": "sample\\sample-1.ans"
+    },
+    {
+      "name": "sample-2",
+      "type": "sample-2",
+      "seed": "2",
+      "group": "sample",
+      "input": "sample\\sample-2.in",
+      "answer": "sample\\sample-2.ans"
+    },
+    {
+      "name": "sample-3",
+      "type": "sample-3",
+      "seed": "3",
+      "group": "sample",
+      "input": "sample\\sample-3.in",
+      "answer": "sample\\sample-3.ans"
+    },
+    {
+      "name": "single-1",
+      "type": "single",
+      "seed": "31",
+      "group": "secret",
+      "input": "secret\\single-1.in",
+      "answer": "secret\\single-1.ans"
+    },
+    {
+      "name": "single-2",
+      "type": "single",
+      "seed": "32",
+      "group": "secret",
+      "input": "secret\\single-2.in",
+      "answer": "secret\\single-2.ans"
+    },
+    {
+      "name": "single-3",
+      "type": "single",
+      "seed": "33",
+      "group": "secret",
+      "input": "secret\\single-3.in",
+      "answer": "secret\\single-3.ans"
+    },
+    {
+      "name": "single-4",
+      "type": "single",
+      "seed": "34",
+      "group": "secret",
+      "input": "secret\\single-4.in",
+      "answer": "secret\\single-4.ans"
+    },
+    {
+      "name": "small-1",
+      "type": "small",
+      "seed": "31",
+      "group": "secret",
+      "input": "secret\\small-1.in",
+      "answer": "secret\\small-1.ans"
+    },
+    {
+      "name": "small-2",
+      "type": "small",
+      "seed": "32",
+      "group": "secret",
+      "input": "secret\\small-2.in",
+      "answer": "secret\\small-2.ans"
+    },
+    {
+      "name": "small-3",
+      "type": "small",
+      "seed": "33",
+      "group": "secret",
+      "input": "secret\\small-3.in",
+      "answer": "secret\\small-3.ans"
+    },
+    {
+      "name": "small-4",
+      "type": "small",
+      "seed": "34",
+      "group": "secret",
+      "input": "secret\\small-4.in",
+      "answer": "secret\\small-4.ans"
+    },
+    {
+      "name": "small-5",
+      "type": "small",
+      "seed": "35",
+      "group": "secret",
+      "input": "secret\\small-5.in",
+      "answer": "secret\\small-5.ans"
+    },
+    {
+      "name": "small-6",
+      "type": "small",
+      "seed": "36",
+      "group": "secret",
+      "input": "secret\\small-6.in",
+      "answer": "secret\\small-6.ans"
+    },
+    {
+      "name": "small-7",
+      "type": "small",
+      "seed": "37",
+      "group": "secret",
+      "input": "secret\\small-7.in",
+      "answer": "secret\\small-7.ans"
+    },
+    {
+      "name": "small-8",
+      "type": "small",
+      "seed": "38",
+      "group": "secret",
+      "input": "secret\\small-8.in",
+      "answer": "secret\\small-8.ans"
+    },
+    {
+      "name": "chain-1",
+      "type": "chain",
+      "seed": "31",
+      "group": "secret",
+      "input": "secret\\chain-1.in",
+      "answer": "secret\\chain-1.ans"
+    },
+    {
+      "name": "chain-2",
+      "type": "chain",
+      "seed": "32",
+      "group": "secret",
+      "input": "secret\\chain-2.in",
+      "answer": "secret\\chain-2.ans"
+    },
+    {
+      "name": "chain-3",
+      "type": "chain",
+      "seed": "33",
+      "group": "secret",
+      "input": "secret\\chain-3.in",
+      "answer": "secret\\chain-3.ans"
+    },
+    {
+      "name": "chain-4",
+      "type": "chain",
+      "seed": "34",
+      "group": "secret",
+      "input": "secret\\chain-4.in",
+      "answer": "secret\\chain-4.ans"
+    },
+    {
+      "name": "mex-1",
+      "type": "mex",
+      "seed": "31",
+      "group": "secret",
+      "input": "secret\\mex-1.in",
+      "answer": "secret\\mex-1.ans"
+    },
+    {
+      "name": "mex-2",
+      "type": "mex",
+      "seed": "32",
+      "group": "secret",
+      "input": "secret\\mex-2.in",
+      "answer": "secret\\mex-2.ans"
+    },
+    {
+      "name": "mex-3",
+      "type": "mex",
+      "seed": "33",
+      "group": "secret",
+      "input": "secret\\mex-3.in",
+      "answer": "secret\\mex-3.ans"
+    },
+    {
+      "name": "mex-4",
+      "type": "mex",
+      "seed": "34",
+      "group": "secret",
+      "input": "secret\\mex-4.in",
+      "answer": "secret\\mex-4.ans"
+    },
+    {
+      "name": "random-large-1",
+      "type": "random-large",
+      "seed": "31",
+      "group": "secret",
+      "input": "secret\\random-large-1.in",
+      "answer": "secret\\random-large-1.ans"
+    },
+    {
+      "name": "random-large-2",
+      "type": "random-large",
+      "seed": "32",
+      "group": "secret",
+      "input": "secret\\random-large-2.in",
+      "answer": "secret\\random-large-2.ans"
+    },
+    {
+      "name": "random-large-3",
+      "type": "random-large",
+      "seed": "33",
+      "group": "secret",
+      "input": "secret\\random-large-3.in",
+      "answer": "secret\\random-large-3.ans"
+    },
+    {
+      "name": "random-large-4",
+      "type": "random-large",
+      "seed": "34",
+      "group": "secret",
+      "input": "secret\\random-large-4.in",
+      "answer": "secret\\random-large-4.ans"
+    },
+    {
+      "name": "layered-1",
+      "type": "layered",
+      "seed": "31",
+      "group": "secret",
+      "input": "secret\\layered-1.in",
+      "answer": "secret\\layered-1.ans"
+    },
+    {
+      "name": "layered-2",
+      "type": "layered",
+      "seed": "32",
+      "group": "secret",
+      "input": "secret\\layered-2.in",
+      "answer": "secret\\layered-2.ans"
+    },
+    {
+      "name": "layered-3",
+      "type": "layered",
+      "seed": "33",
+      "group": "secret",
+      "input": "secret\\layered-3.in",
+      "answer": "secret\\layered-3.ans"
+    }
+  ]
+}

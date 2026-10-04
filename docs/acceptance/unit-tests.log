@@ -1,0 +1,35 @@
+test_begin_idempotency_and_submit_validation (test_api.APITests.test_begin_idempotency_and_submit_validation) ... ok
+test_csrf_origin_and_host (test_api.APITests.test_csrf_origin_and_host) ... ok
+test_end_final_and_new_vp (test_api.APITests.test_end_final_and_new_vp) ... ok
+test_filtering_pending_and_freeze (test_api.APITests.test_filtering_pending_and_freeze) ... ok
+test_invalid_code_and_problem (test_api.APITests.test_invalid_code_and_problem) ... ok
+test_owner_isolation (test_api.APITests.test_owner_isolation) ... ok
+test_resources_are_allowlisted (test_api.APITests.test_resources_are_allowlisted) ... ok
+test_restart_restores_state_and_requeues (test_api.APITests.test_restart_restores_state_and_requeues) ... ok
+test_commas_bom_crlf (test_core.ImportTests.test_commas_bom_crlf) ... ok
+test_count_mismatch (test_core.ImportTests.test_count_mismatch) ... ok
+test_duplicate_event (test_core.ImportTests.test_duplicate_event) ... ok
+test_input_identity_changes_with_answers (test_core.ImportTests.test_input_identity_changes_with_answers) ... ok
+test_traversal_missing_and_interactive (test_core.ImportTests.test_traversal_missing_and_interactive) ... ok
+test_unknown_verdict_and_reference (test_core.ImportTests.test_unknown_verdict_and_reference) ... ok
+test_windows_manifest_and_assets (test_core.ImportTests.test_windows_manifest_and_assets) ... ok
+test_four_hour_baseline (test_core.RealDataTests.test_four_hour_baseline) ... ok
+test_import_counts (test_core.RealDataTests.test_import_counts) ... ok
+test_samples_match_markdown (test_core.RealDataTests.test_samples_match_markdown) ... ok
+test_delayed_prefreeze_judgement (test_core.RulesTests.test_delayed_prefreeze_judgement) ... ok
+test_exact_threshold_and_deduplicate (test_core.RulesTests.test_exact_threshold_and_deduplicate) ... ok
+test_freeze_boundary_and_final (test_core.RulesTests.test_freeze_boundary_and_final) ... ok
+test_icpc_penalty_and_ce_exemption (test_core.RulesTests.test_icpc_penalty_and_ce_exemption) ... ok
+test_original_five_problem_example (test_core.RulesTests.test_original_five_problem_example) ... ok
+test_short_contest_and_future_events (test_core.RulesTests.test_short_contest_and_future_events) ... ok
+test_threshold_rounding_and_cap (test_core.RulesTests.test_threshold_rounding_and_cap) ... ok
+test_ties_share_rank (test_core.RulesTests.test_ties_share_rank) ... ok
+test_cancellation_and_runtime_error (test_runner.ProcessTests.test_cancellation_and_runtime_error) ... ok
+test_memory_and_output_limits (test_runner.ProcessTests.test_memory_and_output_limits) ... ok
+test_root_exit_cleans_surviving_child (test_runner.ProcessTests.test_root_exit_cleans_surviving_child) ... ok
+test_timeout_and_tree_cleanup (test_runner.ProcessTests.test_timeout_and_tree_cleanup) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 10.332s
+
+OK
