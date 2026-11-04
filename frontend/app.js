@@ -51,18 +51,54 @@ function updateClock() {
   if ($("#remaining-clock")) $("#remaining-clock").textContent = `剩余 ${duration(state.contest.duration - localElapsed())}`;
 }
 function sidebar() {
-  const currentName = $("#vp-name")?.value || "我的 VP 队伍";
-  const oldFocus = document.activeElement?.id;
+  const currentName = $("#vp-name")?.value ?? "我的 VP 队伍";
   const c = state.contest, b = state.board;
-  $("#sidebar").innerHTML = `<section class="panel"><div class="sidebar-title">比赛信息</div><div class="contest-summary"><div><div class="phase">${phase()}</div><div class="clock" id="elapsed-clock">${duration(Math.min(b.elapsed, c.duration))}</div><div class="remaining" id="remaining-clock">剩余 ${duration(c.duration - b.elapsed)}</div></div><div class="progress"><span style="width:${Math.min(100, b.elapsed / c.duration * 100)}%"></span></div><dl class="metadata"><dt>比赛时长</dt><dd>${c.duration / 60} 分钟</dd><dt>历史队伍</dt><dd>${c.historical_teams}</dd><dt>公开阈值</dt><dd>${b.threshold} 支队伍</dd><dt>封榜时间</dt><dd>04:00:00</dd><dt>计分模式</dt><dd>ICPC</dd></dl></div></section>
+  const vpKey = `${state.session?.id || "lobby"}:${active() ? "active" : "form"}`;
+  const template = document.createElement("template");
+  template.innerHTML = `<section class="panel contest-panel"><div class="sidebar-title">比赛信息</div><div class="contest-summary"><div><div class="phase">${phase()}</div><div class="clock" id="elapsed-clock">${duration(Math.min(b.elapsed, c.duration))}</div><div class="remaining" id="remaining-clock">剩余 ${duration(c.duration - b.elapsed)}</div></div><div class="progress"><span style="width:${Math.min(100, b.elapsed / c.duration * 100)}%"></span></div><dl class="metadata"><dt>比赛时长</dt><dd>${c.duration / 60} 分钟</dd><dt>历史队伍</dt><dd>${c.historical_teams}</dd><dt>公开阈值</dt><dd>${b.threshold} 支队伍</dd><dt>封榜时间</dt><dd>04:00:00</dd><dt>计分模式</dt><dd>ICPC</dd></dl></div></section>
     <section class="panel vp-panel"><div class="sidebar-title">→ Virtual participation</div><div class="panel-body">${active() ? `<p><strong>${esc(state.session.name)}</strong></p><p class="hint">刷新或重启后继续计时。赛时提交不公开耗时与内存。</p><a href="#submit" class="own-status">提交代码 →</a>` : `<p class="hint">${state.session ? "本场 VP 已结束，可查看最终结果，或开启新的比赛。" : "与历史队伍同时起跑，体验 CCPC 新榜单机制。"}</p><form id="vp-form" class="vp-form"><input id="vp-name" aria-label="队伍名" maxlength="100" value="${esc(currentName)}" required><button class="primary" type="submit">${state.session ? "重新 VP" : "开始 VP"}</button></form>${state.session ? '<p><a href="#final">查看最终结果 →</a></p>' : ""}`}</div></section>
     <section class="panel rules-panel"><div class="sidebar-title">榜单规则</div><div class="panel-body"><div class="rule-note">四小时前，至少 <strong>${b.threshold}</strong> 队通过的题目才公开人数与逐队详情。其余通过计入“其他”。<br><br>四小时起公开所有题目的四小时快照，随后封榜。本人判定继续更新。</div>${b.pending ? `<p class="hint">当前快照仍有 ${b.pending} 条待判提交。</p>` : ""}</div></section>
     ${state.sessions.length ? `<section class="panel archive-panel"><div class="sidebar-title">本地会话</div><div class="panel-body"><select id="session-select" class="session-select" aria-label="选择历史 VP 会话">${state.sessions.map(s => `<option value="${s.id}" ${s.id === state.session?.id ? "selected" : ""}>${esc(s.name)} · ${new Date(s.started * 1000).toLocaleDateString()} ${s.ended ? "已结束" : "进行中"}</option>`).join("")}</select></div></section>` : ""}`;
-  if (oldFocus === "vp-name") $("#vp-name")?.focus();
-  $("#vp-form")?.addEventListener("submit", async event => {
-    event.preventDefault(); const button = $("button", event.target); button.disabled = true;
+  const root = $("#sidebar");
+  const preserveVP = $(".vp-panel", root)?.dataset.key === vpKey;
+  for (const panel of Array.from(template.content.children)) {
+    const existing = $(`.${panel.classList[1]}`, root);
+    if (panel.classList.contains("vp-panel")) {
+      // Keep the input AND its ancestors connected: recreating or moving them
+      // resets the caret and interrupts native IME composition (e.g. Sogou).
+      if (preserveVP) continue;
+      panel.dataset.key = vpKey;
+    }
+    if (existing) existing.replaceWith(panel);
+    else root.append(panel);
+  }
+  if (!state.sessions.length) $(".archive-panel", root)?.remove();
+  if (!preserveVP) wireVP();
+  $("#session-select")?.addEventListener("change", async event => {
+    sessionId = event.target.value;
+    routeKey = "";
+    location.hash = "problems";
+    await refresh();
+  });
+}
+function wireVP() {
+  const form = $("#vp-form"), input = $("#vp-name");
+  if (!form) return;
+  let composing = false;
+  input.addEventListener("compositionstart", () => composing = true);
+  input.addEventListener("compositionend", () => composing = false);
+  input.addEventListener("keydown", event => {
+    // Some IMEs end composition before keydown but still report keyCode 229.
+    if (event.key === "Enter" && (composing || event.isComposing || event.keyCode === 229)) event.preventDefault();
+  });
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    if (composing) return;
+    const button = $("button", event.target);
+    if (button.disabled) return;
+    button.disabled = true;
     try {
-      const result = await api("/api/vp", { name: $("#vp-name").value });
+      const result = await api("/api/vp", { name: input.value });
       sessionId = result.session_id;
       location.hash = "problems";
       routeKey = "";
@@ -73,12 +109,6 @@ function sidebar() {
       showError(error.message);
       button.disabled = false;
     }
-  });
-  $("#session-select")?.addEventListener("change", async event => {
-    sessionId = event.target.value;
-    routeKey = "";
-    location.hash = "problems";
-    await refresh();
   });
 }
 function problemList() {
@@ -174,9 +204,24 @@ function renderMarkdown(markdown, pid) {
   html = html.replace(/CCPCMATHPLACEHOLDER(\d+)END/g, (_, n) => esc(math[Number(n)]));
   const holder = document.createElement("div"); holder.innerHTML = html;
   const sampleGroups = new Map();
-  holder.querySelectorAll("pre > code").forEach(code => {
+  const sampleCodes = Array.from(holder.querySelectorAll("pre > code"));
+  const reserved = new Set(sampleCodes.map(code => code.className.match(/language-(?:input|output)(\d+)$/)?.[1]).filter(Boolean));
+  const implicitLabels = [], occurrences = { input: 0, output: 0 };
+  let nextLabel = 1;
+  sampleCodes.forEach(code => {
     const type = code.className.match(/language-(input|output)(\d*)$/); if (!type) return;
-    const key = type[2] || "1", kind = type[1];
+    const kind = type[1];
+    let key = type[2];
+    if (!key) {
+      // Pair the nth unnumbered input with the nth unnumbered output, rather
+      // than merging every sample into group 1. Reserve explicit fence IDs.
+      const index = occurrences[kind]++;
+      if (!implicitLabels[index]) {
+        while (reserved.has(String(nextLabel))) nextLabel++;
+        implicitLabels[index] = String(nextLabel++);
+      }
+      key = implicitLabels[index];
+    }
     const pre = code.parentNode, block = document.createElement("div");
     block.className = "sample-block";
     const head = document.createElement("div");
@@ -311,5 +356,9 @@ window.addEventListener("hashchange", () => {
   refresh();
 });
 refresh();
-setInterval(refresh, 4000);
+let pollTick = 0;
+setInterval(() => {
+  // Show completed judgements promptly while keeping idle polling at 4 s.
+  if (++pollTick % 4 === 0 || state?.submissions.some(sub => pending(sub.verdict))) refresh();
+}, 1000);
 setInterval(updateClock, 1000);

@@ -22,8 +22,13 @@ def main():
     args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=True)
     problems, fingerprint = load_problems(args.problem_list)
     judge = Judge(problems, args.output / "judge")
+    print(f"Preparing all {len(problems)} checkers...", flush=True)
+    prepared_at = time.monotonic()
+    judge.prepare_checkers()
+    prepare_seconds = round(time.monotonic() - prepared_at, 2)
     report = {"timestamp": datetime.now(timezone.utc).isoformat(), "platform": platform.platform(),
-              "python": sys.version, "input_fingerprint": fingerprint, "results": [], "success": False}
+              "python": sys.version, "input_fingerprint": fingerprint, "checker_setup_seconds": prepare_seconds,
+              "results": [], "success": False}
     failed = False
     for pid, p in problems.items():
         main_solution = next(s for s in p.config["solutions"] if s["role"] == "main")
@@ -51,7 +56,8 @@ def main():
     from dataclasses import replace
     bad = args.output / "bad-checker.cpp"; bad.write_text("int main(){return 3;}")
     alternate = dict(problems); alternate[pid] = replace(problems[pid], checker=bad.resolve())
-    bad_judge = Judge(alternate, args.output / "system-error")
+    bad_judge = Judge({pid: alternate[pid]}, args.output / "system-error")
+    bad_judge.prepare_checkers()
     result = bad_judge.evaluate(pid, "int main(){return 0;}", "cpp", "probe-system-error")
     good = result.verdict == "Judge Error"; failed |= not good
     report["results"].append({"probe": "Judge Error", "passed": good, **asdict(result)})

@@ -12,7 +12,8 @@ from backend.judge import Judge
 if __name__ == "__main__":
     output = ROOT / "tmp/acceptance"
     problems, _ = load_problems(ROOT / "tests/ICPC-Shaanxi-2025-National-Invitational-Contest")
-    judge = Judge(problems, output / "python-judge")
+    judge = Judge({"L": problems["L"]}, output / "python-judge")
+    judge.prepare_checkers()
     result = judge.evaluate("L", (problems["L"].root / "src/solution.py").read_text(encoding="utf-8-sig"), "python", "L-python")
     syntax = judge.evaluate("L", "def broken(:\n", "python", "python-syntax")
     success = result.verdict == "AC" and result.checked == 38 and syntax.verdict == "CE"

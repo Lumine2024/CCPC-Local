@@ -1,0 +1,246 @@
+{
+  "problem": "A",
+  "result": {
+    "verdict": "TLE",
+    "message": "",
+    "checked": 15,
+    "time_ms": 1000,
+    "memory_kb": 22264
+  },
+  "cases": [
+    {
+      "case": "sample-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 10084
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 34708
+      }
+    },
+    {
+      "case": "min-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 125,
+        "memory_kb": 8944
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 94,
+        "memory_kb": 34708
+      }
+    },
+    {
+      "case": "extreme-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 94,
+        "memory_kb": 8892
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 34692
+      }
+    },
+    {
+      "case": "partial-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 109,
+        "memory_kb": 14944
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 94,
+        "memory_kb": 34672
+      }
+    },
+    {
+      "case": "huge-count-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 9936
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 172,
+        "memory_kb": 34700
+      }
+    },
+    {
+      "case": "huge-count-2",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 110,
+        "memory_kb": 16136
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 63,
+        "memory_kb": 34684
+      }
+    },
+    {
+      "case": "alternating-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 109,
+        "memory_kb": 16168
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 40616
+      }
+    },
+    {
+      "case": "alternating-2",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 109,
+        "memory_kb": 16172
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 108,
+        "memory_kb": 40616
+      }
+    },
+    {
+      "case": "many-groups-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 109,
+        "memory_kb": 22008
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 94,
+        "memory_kb": 34672
+      }
+    },
+    {
+      "case": "many-groups-2",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 125,
+        "memory_kb": 22264
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 34704
+      }
+    },
+    {
+      "case": "random-small-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 14824
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 94,
+        "memory_kb": 34696
+      }
+    },
+    {
+      "case": "random-small-2",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 46,
+        "memory_kb": 15380
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 34716
+      }
+    },
+    {
+      "case": "random-small-3",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 125,
+        "memory_kb": 16264
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 34720
+      }
+    },
+    {
+      "case": "random-small-4",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 109,
+        "memory_kb": 15344
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 94,
+        "memory_kb": 34716
+      }
+    },
+    {
+      "case": "random-small-5",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 78,
+        "memory_kb": 15860
+      },
+      "checker": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 93,
+        "memory_kb": 34660
+      }
+    },
+    {
+      "case": "random-small-6",
+      "run": {
+        "verdict": "TLE",
+        "exit_code": 1,
+        "time_ms": 1000,
+        "memory_kb": 5596
+      }
+    }
+  ]
+}

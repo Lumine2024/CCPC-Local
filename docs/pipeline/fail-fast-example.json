@@ -1,0 +1,37 @@
+{
+  "problem": "A",
+  "result": {
+    "verdict": "WA",
+    "message": "",
+    "checked": 0,
+    "time_ms": 311,
+    "memory_kb": 15536
+  },
+  "cases": [
+    {
+      "case": "sample-1",
+      "run": {
+        "verdict": "OK",
+        "exit_code": 0,
+        "time_ms": 311,
+        "memory_kb": 15536
+      },
+      "checker": {
+        "verdict": "RE",
+        "exit_code": 1,
+        "time_ms": 109,
+        "memory_kb": 40604
+      }
+    },
+    {
+      "case": "min-1",
+      "run": {
+        "verdict": "Cancelled",
+        "exit_code": 1,
+        "time_ms": 47,
+        "memory_kb": 5596
+      },
+      "discarded": true
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "platform": "Windows-11-10.0.22621-SP0",
+  "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+  "input_fingerprint": "fb2637b2b0455c7324ee6855ba80c0100f89b9cc93fa6187d7be352dfed87bfc",
+  "results": [
+    {
+      "problem": "A",
+      "language": "cpp",
+      "round": 1,
+      "elapsed_seconds": 12.958,
+      "phases_seconds": {
+        "compile": 2.653,
+        "program": 5.203,
+        "checker": 5.092
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 155,
+      "memory_kb": 22552
+    },
+    {
+      "problem": "A",
+      "language": "cpp",
+      "round": 2,
+      "elapsed_seconds": 12.549,
+      "phases_seconds": {
+        "compile": 3.156,
+        "program": 5.349,
+        "checker": 4.037
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 171,
+      "memory_kb": 22548
+    },
+    {
+      "problem": "A",
+      "language": "python",
+      "round": 1,
+      "elapsed_seconds": 16.609,
+      "phases_seconds": {
+        "program": 12.182,
+        "checker": 4.42
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 625,
+      "memory_kb": 67960
+    },
+    {
+      "problem": "A",
+      "language": "python",
+      "round": 2,
+      "elapsed_seconds": 14.526,
+      "phases_seconds": {
+        "program": 10.46,
+        "checker": 4.058
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 484,
+      "memory_kb": 70684
+    }
+  ],
+  "checker_setup_seconds": {
+    "A": 6.809
+  },
+  "success": true
+}

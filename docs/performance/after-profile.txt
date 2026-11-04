@@ -1,0 +1,48 @@
+         1528531 function calls (1501051 primitive calls) in 119.227 seconds
+
+   Ordered by: cumulative time
+   List reduced from 335 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        8    0.007    0.001  119.222   14.903 D:\local-judge-for-ccpc-new-board-presentation\backend\judge.py:77(evaluate)
+      548    0.016    0.000  119.140    0.217 D:\local-judge-for-ccpc-new-board-presentation\scripts\judge_benchmark.py:34(timed_run)
+      548    0.456    0.001  119.023    0.217 D:\local-judge-for-ccpc-new-board-presentation\backend\runner.py:113(run)
+    12899   43.314    0.003   43.314    0.003 {built-in method time.sleep}
+      548    0.005    0.000   38.718    0.071 C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:807(__init__)
+      548    0.013    0.000   38.692    0.071 C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1436(_execute_child)
+      548   38.571    0.070   38.571    0.070 {built-in method _winapi.CreateProcess}
+      716    0.086    0.000   17.021    0.024 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:951(children)
+    37154    0.053    0.000   15.578    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\_pswindows.py:663(wrapper)
+      716   13.685    0.019   13.685    0.019 {built-in method psutil_windows.ppid_map}
+        4    0.000    0.000   13.491    3.373 D:\local-judge-for-ccpc-new-board-presentation\backend\judge.py:46(compile)
+    32184    0.096    0.000    8.475    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\_common.py:367(wrapper)
+    32180    0.023    0.000    8.314    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:1129(memory_info)
+    32180    0.077    0.000    8.245    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\_pswindows.py:812(memory_info)
+    32180    0.029    0.000    8.134    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\_pswindows.py:789(_get_raw_meminfo)
+    32180    8.099    0.000    8.099    0.000 {built-in method psutil_windows.proc_memory_info}
+    26912    0.032    0.000    4.853    0.000 C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:835(stat)
+    26925    4.782    0.000    4.823    0.000 {built-in method nt.stat}
+      548    0.005    0.000    4.070    0.007 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:1570(wait_procs)
+      274    0.002    0.000    4.064    0.015 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:1607(check_gone)
+      274    0.001    0.000    4.062    0.015 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:1342(wait)
+      274    0.002    0.000    4.059    0.015 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\_pswindows.py:859(wait)
+      274    4.056    0.015    4.056    0.015 {built-in method psutil_windows.pid_exists}
+     4422    0.005    0.000    3.223    0.001 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:313(__init__)
+     4422    0.025    0.000    3.218    0.001 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:316(_init)
+     4426    0.005    0.000    3.209    0.001 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\_pswindows.py:909(create_time)
+     4422    0.008    0.000    3.169    0.001 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:363(_get_ident)
+     4426    3.137    0.001    3.137    0.001 {built-in method psutil_windows.proc_times}
+    12899    0.315    0.000    0.936    0.000 D:\local-judge-for-ccpc-new-board-presentation\backend\runner.py:75(pids)
+    16199    0.565    0.000    0.634    0.000 {built-in method builtins.__build_class__}
+     1692    0.564    0.000    0.597    0.000 {built-in method _io.open}
+     1416    0.002    0.000    0.591    0.000 C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\pathlib.py:1005(open)
+      990    0.001    0.000    0.451    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:459(_raise_if_pid_reused)
+     1538    0.006    0.000    0.450    0.000 D:\local-judge-for-ccpc-new-board-presentation\.venv\Lib\site-packages\psutil\__init__.py:625(is_running)
+      548    0.055    0.000    0.140    0.000 D:\local-judge-for-ccpc-new-board-presentation\backend\runner.py:19(__init__)
+    13447    0.115    0.000    0.127    0.000 D:\local-judge-for-ccpc-new-board-presentation\backend\runner.py:69(peak)
+    13995    0.020    0.000    0.085    0.000 C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:1233(poll)
+     1696    0.084    0.000    0.084    0.000 {method '__exit__' of '_io._IOBase' objects}
+     3836    0.003    0.000    0.081    0.000 C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.1520.0_x64__qbz5n2kfra8p0\Lib\subprocess.py:218(Close)
+     2740    0.079    0.000    0.079    0.000 {built-in method _winapi.CloseHandle}
+
+

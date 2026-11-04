@@ -12,11 +12,11 @@
 
 ```text
 launcher.py
-  → App 加载历史记录、题包、SQLite 和后台判题 worker
+  → App 加载历史记录、题包、SQLite，后台判题 worker 立即预构建全部 checker
   → 同一 HTTP 服务提供 frontend 与 API
   → 网页开始 VP，持久化队伍、开始时间和固定人数
   → 历史事件按服务端比赛时钟回放
-  → 接收源码，后台编译、逐 case 运行、调用原 checker
+  → 接收源码，checker 全部预构建完成后，后台编译选手程序、逐 case 运行并流水线调用原 checker
   → 持久化判定，更新本人记录和 ICPC 成绩
   → 后端生成经过阈值过滤 / 四小时封榜的公共快照
   → 比赛结束后保留记录，支持最终结果、旧会话和重新 VP
@@ -54,6 +54,7 @@ launcher.py
 ├── tests/
 │   ├── test_core.py                  # 规则、解析、题包和实数据回归
 │   ├── test_api.py                   # HTTP、会话、过滤与持久化测试
+│   ├── test_judge.py                 # 预构建、流水线、判定顺序和取消清理回归
 │   ├── test_runner.py                # 超时、内存、输出与进程清理测试
 │   ├── contest.txt                   # 388 队、3537 条历史提交
 │   └── ICPC-Shaanxi-2025-National-Invitational-Contest/
@@ -61,6 +62,9 @@ launcher.py
 ├── image-assets/                     # 原始 Codeforces 页面参考截图
 ├── docs/
 │   ├── ACCEPTANCE.md                 # 已执行验收的结论与复现入口
+│   ├── JUDGE_PERFORMANCE.md          # 判题性能实测、优化和回归记录
+│   ├── JUDGE_PIPELINE.md             # checker 预构建与逐点流水线的说明和验证
+│   ├── performance/                 # 性能前后数据、日志与验收结果
 │   └── acceptance/                   # 7 份结果 JSON、测试日志、9 张截图
 ├── tmp/                              # 本机状态、评测产物和验收运行目录
 └── bin/                              # 当前为空；应用不依赖此目录
@@ -92,7 +96,7 @@ pwsh launcher.ps1 -ProblemList tests/ICPC-Shaanxi-2025-National-Invitational-Con
 
 ## 4. 前端页面与 API 在哪里
 
-`frontend/app.js` 使用 hash 路由，每 4 秒读取服务端状态；倒计时每秒更新显示，计分和提交时间仍由后端决定。
+`frontend/app.js` 使用 hash 路由，通常每 4 秒读取服务端状态，有待判提交时每秒读取；倒计时每秒更新显示，计分和提交时间仍由后端决定。
 
 | 页面 / 路由 | 已实现内容 | 主要函数 |
 | --- | --- | --- |
@@ -204,19 +208,19 @@ pwsh launcher.ps1 -ProblemList tests/ICPC-Shaanxi-2025-National-Invitational-Con
 
 `backend/judge.py::Judge` 的实际工作流：
 
-1. 启动时解析各题编译器，HTTP 接收提交后写库并立即返回 ID。
+1. 启动时解析各题编译器，后台 worker 立即预构建 / 加载全部题目的 checker；HTTP 服务可正常提供页面，接收提交后写库并立即返回 ID。首次无缓存时，队列等全部 checker 准备完毕后再开始处理提交。
 2. 单后台 worker 取队列任务，将状态更新为 Compiling；源码写入独立任务目录。
 3. checker 按源码、testlib、编译配置、标准和编译器路径摘要缓存；C++ 按 `build.cppFlags` 和标准模板编译，并添加 include 路径。Windows 编译设置 256 MiB 栈。
-4. 编译失败 / 超时判 CE，重新评测前移除旧提交二进制；Python 用语法编译检查映射 CE，再由当前 Python 的 `-I` 模式执行。
-5. 状态更新为 Running，按 manifest 顺序运行全部样例和隐藏 case，输入通过文件重定向，保存 stdout / stderr。
-6. 用户程序正常结束后运行 `checker input-file contestant-output-file answer-file`；成功才进入下一组，失败提前停止，全部通过判 AC。
+4. 编译失败 / 超时判 CE，重新评测前移除旧提交二进制；Python 用语法编译检查映射 CE，再由当前 Python 的 `-I` 模式执行。提交处理只读取预构建的 checker 路径，绝不临时构建 checker；构建失败只影响对应题目的判定。
+5. 状态更新为 Running，按 manifest 顺序运行全部样例和隐藏 case，输入通过文件重定向。每个 case 的输出保存在 `jobs/<ID>/cases/<五位序号>/`，checker 始终读取该点自己的输出。
+6. 用户程序正常结束后由独立线程运行 `checker input-file contestant-output-file answer-file`，同时运行下一点选手程序。最多一个 checker 与一个选手程序并行，最多提前运行一个测试点；失败立即取消提前运行的程序并清理进程树。按 manifest 顺序确定最早失败判定，忽略被丢弃点的资源数据，全部通过判 AC。
 7. 结果和资源峰值写库，内部逐 case 记录写入任务目录，再由业务层生成个人记录与公共成绩。
 
 状态包括 Queued、Compiling、Running，以及 AC / WA / TLE / MLE / RE / CE / OLE / Judge Error。checker 的选手输出错误码 1、2、4、8 映射 WA，内部失败、超时等映射 Judge Error；checker 诊断、隐藏答案与逐 case 内部日志不返回选手。
 
 `backend/runner.py::run()` 使用文件 I/O、墙钟超时、进程树内存监测和输出上限：单 case 使用题目配置限制，编译最多 120 秒，checker 最多 10 秒，stdout 上限 16 MiB、stderr 上限 1 MiB。计时从创建完成、恢复执行至退出，不包含 OS 创建进程和 Job 初始化开销。
 
-Windows 使用挂起启动、Job Object 和派生进程跟踪，退出 / 超时 / 取消时终止并等待进程树，包括 Windows Store Python 的派生代理。Linux / macOS 使用独立进程组和 RSS 采样。监测约每 3 ms 一次，度量受系统调度与硬件影响；这是本地资源控制，源码仍以当前用户权限运行，未建立不可信代码的系统沙箱。
+Windows 使用挂起启动、Job Object 和派生进程跟踪；监控优先查询当前 Job 的成员和内存峰值，系统进程树兼容扫描最多每 50 ms 一次，Python 启动时立即扫描以跟踪派生代理。退出 / 超时 / 取消时由 Job 统一终止并等待成员，额外清理 Job 外代理，避免重复等待已退出的 Job 成员。Linux / macOS 使用独立进程组和 RSS 采样。监测约每 3 ms 一次，度量受系统调度与硬件影响；这是本地资源控制，源码仍以当前用户权限运行，未建立不可信代码的系统沙箱。
 
 ## 8. 状态、缓存和日志保存在哪里
 
@@ -229,7 +233,7 @@ Windows 使用挂起启动、Job Object 和派生进程跟踪，退出 / 超时 
 | `state.sqlite3`、`-wal`、`-shm` | 持久化身份关联、会话、源码和判定 |
 | `server.log` | HTTP 访问与服务内部错误 |
 | `judge/cache/<题号>/<摘要>/` | checker 二进制及编译日志，可重建缓存 |
-| `judge/jobs/<提交ID>/` | 提交源码、编译产物、运行输出、checker 输出、`result.json` 或异常日志 |
+| `judge/jobs/<提交ID>/` | 提交源码、编译产物、`cases/<序号>/` 中的逐点运行 / checker 输出、`result.json` 或异常日志；提前运行但弃用的点在 JSON 中标记 `discarded` |
 
 题包、历史和参考图作为只读输入使用，应用状态不写回题包。清理 checker 缓存不会删除提交历史；源码也在数据库保存，SQLite 是会话恢复的持久化入口。任务与日志长期保留，评测目录不通过 HTTP 开放。
 
@@ -240,6 +244,8 @@ Windows 使用挂起启动、Job Object 和派生进程跟踪，退出 / 超时 
 | `tests/test_core.py` | 阈值与去重、“其他3题”、ICPC、封榜边界、延迟判定、解析、路径、真实数据与样例一致性 |
 | `tests/test_api.py` | 开始幂等、提交验证、会话隔离、Host / Origin / CSRF、资源白名单、封榜与结束、重启恢复 |
 | `tests/test_runner.py` | 超时、取消、RE、MLE、OLE，以及根进程退出后的子进程清理 |
+| `tests/test_judge.py` | 全题 checker 预构建、并行与输出隔离、最早失败优先、提交局部取消、关停、真实子进程清理和中断构建缓存 |
+| `scripts/judge_benchmark.py` | 真实提交总耗时、编译 / 程序 / checker 分阶段耗时和可选性能分析；默认 `tmp/judge-benchmark/` |
 | `scripts/unit_acceptance.py` | 运行测试并保存 `tmp/acceptance/unit-results.json`、`unit-tests.log` |
 | `scripts/acceptance.py` | 13 题主标程全量、每题错解、六类异常探针、输入摘要复核；`tmp/acceptance/judge-results.json` |
 | `scripts/reference_acceptance.py` | 独立 C++ 参考解按 `cases` / `groups` / `checkWith` 范围交叉验证；`tmp/acceptance/reference-results.json` |

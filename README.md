@@ -30,6 +30,8 @@ python3 -m venv .venv
 
 ## 使用
 
+另有 [UESTC 校赛初赛工作区](uestc-school-contest-prelimery/README.md)：16 道可判题题目、418 组数据，以及从十二小时榜单按每队估计起点截取、包含近似 RJ 的五小时历史。导入其他 Polygon ZIP 的可复用脚本和榜单转换说明见 [scripts/POLYGON_IMPORT.md](scripts/POLYGON_IMPORT.md)。
+
 1. 在首页设置队伍名，点击“开始 VP”。历史队伍从零时刻与您同步回放。
 2. 点击题号阅读题面，使用每个样例的复制按钮。题目页和提交标签均可粘贴代码或上传 `.cpp` / `.py` 源文件。
 3. 提交进入后台队列；“我的提交”与提交详情显示编译、运行和最终结果。支持 C++（按题包标准）和 Python 3，使用相同题目时限，不额外放宽 Python 时限。
@@ -55,9 +57,9 @@ python3 -m venv .venv
 
 ## 判题与资源限制
 
-所有样例与隐藏测试来自 `exported-tests/manifest.json`，路径兼容 Windows 反斜杠。程序正常退出后运行 `checker input user-output answer`。checker 的选手输出错误映射 WA，内部错误映射 Judge Error；不会使用简单字符串比较或“样例通过即 AC”。非交互题受支持，交互题在导入时明确拒绝。
+所有样例与隐藏测试来自 `exported-tests/manifest.json`，路径兼容 Windows 反斜杠。服务启动后，后台立即预构建 / 加载全部 checker，最多两个编译器并行；首次没有缓存时，提交在队列中等待预构建结束。每次提交只编译选手程序，程序正常退出后运行 `checker input user-output answer`，同时开始运行下一测试点。checker 的选手输出错误映射 WA，内部错误映射 Judge Error；不会使用简单字符串比较或“样例通过即 AC”。非交互题受支持，交互题在导入时明确拒绝。
 
-每个 case 使用配置时限；时间按进程创建完成、恢复执行至退出的墙钟时间计量，不计操作系统创建进程和 Job 初始化开销。编译最多 120 秒，checker 最多 10 秒。stdout 上限 16 MiB，stderr 上限 1 MiB，超限为 OLE。各提交使用隔离工作目录和独立文件；后台单 worker 使判题不阻塞网页，也避免本地并发争用导致不稳定成绩。
+每个 case 使用配置时限；时间按进程创建完成、恢复执行至退出的墙钟时间计量，不计操作系统创建进程和 Job 初始化开销。编译最多 120 秒，checker 最多 10 秒。stdout 上限 16 MiB，stderr 上限 1 MiB，超限为 OLE。各提交使用隔离工作目录，每点使用独立输出文件。后台单 worker 依次处理提交；同一提交内最多一个选手程序与一个 checker 并行，最多提前运行一组数据。一旦失败就取消后续程序并清理进程树，按测试点顺序返回最早失败判定。流程和验证见 [判题流水线说明](docs/JUDGE_PIPELINE.md)。
 
 Windows 在挂起进程上先附加 Job Object，再恢复运行，退出 / 取消时终止整个 Job；内存按进程树的工作集 / 私有提交内存监测，并查询 Job 峰值。Linux / macOS 使用独立进程组和进程树 RSS 采样。采样间隔约 3 ms，实际调度和度量随平台变化，极短的峰值可能不被采样捕获；同一代码在不同机器的成绩可能不同。
 
@@ -74,7 +76,7 @@ Windows 在挂起进程上先附加 Job Object，再恢复运行，退出 / 取�
 | `state.sqlite3`、`-wal`、`-shm` | VP 会话、源码、提交与判定；请保留 |
 | `server.log` | HTTP 和服务内部错误 |
 | `judge/cache/<题号>/<摘要>/` | 编译后的 checker，摘要覆盖源码、testlib 与编译配置 |
-| `judge/jobs/<提交ID>/` | 本人提交源码、编译诊断、最后一组输出、逐 case 判定日志 |
+| `judge/jobs/<提交ID>/` | 本人提交源码、编译诊断、`cases/<序号>/` 中逐点输出及 checker 日志、`result.json` 判定日志 |
 
 运行不改写题包、历史文件或参考图。临时评测目录不通过 HTTP 开放。停服后可删除 `judge/cache` 重建编译缓存，删除 `judge/jobs` 不影响数据库中的源码和记录；不要删除 SQLite 文件来清理缓存。日志和任务目录会保留，长期训练可在停服后自行归档。
 
@@ -107,6 +109,10 @@ Windows 在挂起进程上先附加 Job Object，再恢复运行，退出 / 取�
 浏览器检查实际启动器、VP、精确复制样例、公式与图片、源文件上传和真实 AC、刷新恢复、隐藏榜单、移动布局、本地资源与控制台错误；结果和截图保存到 `tmp/browser-acceptance/`。不提供正常比赛可用的调试时钟接口，四小时边界由注入时钟的业务 / API 测试验证。
 
 还可执行 `scripts/phase_acceptance.py`，用注入的服务端时钟在浏览器验证真实历史事件的两小时、四小时封榜、赛后解榜、重新 VP 与旧会话；不伪造判定、不提供生产调时接口。`scripts/launcher_acceptance.py` 检查主 Python 回退、空格路径、端口占用、退出及环境错误。`scripts/unit_acceptance.py` 保存自动化测试日志与 JSON。
+
+`scripts/ime_acceptance.py` 验证 VP 队伍名在轮询刷新时保留光标、选区、空白草稿及中文组合输入，选词 Enter 不误开启 VP，确认后正常提交并支持重新 VP。测试通过 Chromium 原生组合输入事件模拟输入法，结果保存至 `tmp/ime-acceptance/results.json`；未自动操作搜狗客户端候选窗口。
+
+`scripts/sample_acceptance.py` 验证校赛工作区所有题目的多组样例、输入输出配对与原文复制，并覆盖已有带编号样例及混合格式；结果与 B 题桌面、手机截图保存在 `tmp/sample-acceptance/`。
 
 项目验收结论见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。前端依赖已内置；仅在维护时用 `scripts/vendor_assets.py` 从固定 npm 版本下载并校验 integrity，版本、来源和许可证见 `frontend/vendor/manifest.json` 和 [THIRD_PARTY.md](THIRD_PARTY.md)。判题配置和 checker 协议参考 [ICPC-Problem-Creator.skill](https://github.com/Lumine2024/ICPC-Problem-Creator.skill)，运行不依赖其本机安装目录。
 

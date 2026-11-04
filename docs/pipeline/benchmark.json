@@ -1,0 +1,136 @@
+{
+  "platform": "Windows-11-10.0.22621-SP0",
+  "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+  "input_fingerprint": "fb2637b2b0455c7324ee6855ba80c0100f89b9cc93fa6187d7be352dfed87bfc",
+  "results": [
+    {
+      "problem": "A",
+      "language": "cpp",
+      "round": 1,
+      "elapsed_seconds": 13.81,
+      "phases_seconds": {
+        "compile": 2.929,
+        "program": 10.318,
+        "checker": 8.988
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 531,
+      "memory_kb": 22156
+    },
+    {
+      "problem": "A",
+      "language": "cpp",
+      "round": 2,
+      "elapsed_seconds": 14.027,
+      "phases_seconds": {
+        "compile": 3.406,
+        "program": 10.182,
+        "checker": 7.858
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 327,
+      "memory_kb": 22556
+    },
+    {
+      "problem": "A",
+      "language": "python",
+      "round": 1,
+      "elapsed_seconds": 13.314,
+      "phases_seconds": {
+        "program": 13.124,
+        "checker": 5.861
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 765,
+      "memory_kb": 70984
+    },
+    {
+      "problem": "A",
+      "language": "python",
+      "round": 2,
+      "elapsed_seconds": 12.843,
+      "phases_seconds": {
+        "program": 12.657,
+        "checker": 5.709
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 30,
+      "time_ms": 594,
+      "memory_kb": 70376
+    },
+    {
+      "problem": "L",
+      "language": "cpp",
+      "round": 1,
+      "elapsed_seconds": 14.25,
+      "phases_seconds": {
+        "compile": 3.361,
+        "program": 10.07,
+        "checker": 9.464
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 38,
+      "time_ms": 468,
+      "memory_kb": 16096
+    },
+    {
+      "problem": "L",
+      "language": "cpp",
+      "round": 2,
+      "elapsed_seconds": 13.15,
+      "phases_seconds": {
+        "compile": 3.536,
+        "program": 9.056,
+        "checker": 6.829
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 38,
+      "time_ms": 265,
+      "memory_kb": 16256
+    },
+    {
+      "problem": "L",
+      "language": "python",
+      "round": 1,
+      "elapsed_seconds": 12.522,
+      "phases_seconds": {
+        "program": 12.338,
+        "checker": 6.533
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 38,
+      "time_ms": 547,
+      "memory_kb": 34352
+    },
+    {
+      "problem": "L",
+      "language": "python",
+      "round": 2,
+      "elapsed_seconds": 12.984,
+      "phases_seconds": {
+        "program": 12.757,
+        "checker": 6.494
+      },
+      "verdict": "AC",
+      "message": "",
+      "checked": 38,
+      "time_ms": 593,
+      "memory_kb": 34420
+    }
+  ],
+  "checker_setup_seconds": {
+    "A": 7.658,
+    "L": 7.674
+  },
+  "success": true
+}

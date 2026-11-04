@@ -27,6 +27,7 @@ def main():
             raise RuntimeError(f"{pid}: reference case scope is empty")
         scoped = {pid: replace(p, cases=cases)}
         judge = Judge(scoped, output / "reference-judge")
+        judge.prepare_checkers()
         result = judge.evaluate(pid, (p.root / reference["path"]).read_text(encoding="utf-8-sig"), reference["language"], f"{pid}-reference")
         good = result.verdict == "AC" and result.checked == len(cases)
         failed |= not good

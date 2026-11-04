@@ -6,4 +6,13 @@ __pycache__/
 # temp files
 bin/
 tmp/
+build/
+
+# log files
+logs/
+*.out
+*.err
+
+# private contests
+uestc-*
 

@@ -47,6 +47,7 @@ class WindowsJob:
         self.kernel.AssignProcessToJobObject.argtypes = [w.HANDLE, w.HANDLE]
         self.kernel.TerminateJobObject.argtypes = [w.HANDLE, w.UINT]
         self.kernel.CloseHandle.argtypes = [w.HANDLE]
+        self.pid_capacity = 16
         self.handle = self.kernel.CreateJobObjectW(None, None)
         if not self.handle:
             raise ctypes.WinError(ctypes.get_last_error())
@@ -70,6 +71,21 @@ class WindowsJob:
         if self.kernel.QueryInformationJobObject(self.handle, 9, ctypes.byref(info), ctypes.sizeof(info), None):
             return info.peak_job
         return 0
+
+    def pids(self):
+        """Query only this Job, without enumerating the entire machine."""
+        from ctypes import wintypes as w
+        while True:
+            class ProcessList(ctypes.Structure):
+                _fields_ = [("assigned", w.DWORD), ("count", w.DWORD),
+                            ("ids", ctypes.c_size_t * self.pid_capacity)]
+
+            info = ProcessList()
+            if self.kernel.QueryInformationJobObject(self.handle, 3, ctypes.byref(info), ctypes.sizeof(info), None):
+                return list(info.ids[:info.count])
+            if ctypes.get_last_error() != 234:  # ERROR_MORE_DATA
+                raise ctypes.WinError(ctypes.get_last_error())
+            self.pid_capacity = max(self.pid_capacity * 2, info.assigned)
 
     def close(self):
         if self.handle:
@@ -98,6 +114,8 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
         timeout_ms=1000, memory_mb=256, output_limit=16 * 1024 * 1024, stop: Event | None = None) -> RunResult:
     job, process, peak, reason = None, None, 0, ""
     descendants = {}
+    members = {}
+    next_tree_scan = 0
     started = time.monotonic()
     try:
         if os.name == "nt":
@@ -115,6 +133,10 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
             started = time.monotonic()
             if job:
                 job.attach_resume(process)
+                # Native children inherit the Job. Python activation proxies
+                # can launch outside it, so discover those immediately; other
+                # runs only need the compatibility scan every 50 ms.
+                next_tree_scan = started if Path(command[0]).name.lower().startswith("python") else started + 0.05
             while process.poll() is None:
                 if stop and stop.is_set():
                     reason = "Cancelled"
@@ -124,8 +146,25 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
                     break
                 used = 0
                 try:
-                    for child in ([root, *root.children(recursive=True)] if root else []):
-                        descendants[child.pid] = child
+                    if job:
+                        active_pids = set(job.pids())
+                        for pid in active_pids - members.keys():
+                            try:
+                                members[pid] = psutil.Process(pid)
+                            except psutil.NoSuchProcess:
+                                pass
+                        members = {pid: child for pid, child in members.items() if pid in active_pids}
+                        if root and time.monotonic() >= next_tree_scan:
+                            for child in root.children(recursive=True):
+                                if child.pid not in active_pids:
+                                    descendants[child.pid] = child
+                            next_tree_scan = time.monotonic() + 0.05
+                        monitored = {**descendants, **members}.values()
+                    else:
+                        monitored = [root, *root.children(recursive=True)] if root else []
+                        for child in monitored:
+                            descendants[child.pid] = child
+                    for child in monitored:
                         try:
                             m = child.memory_info()
                             used += max(m.rss, getattr(m, "private", 0))
@@ -134,12 +173,17 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
                 except (psutil.NoSuchProcess, psutil.AccessDenied):
                     pass
                 peak = max(peak, used)
+                if job:
+                    peak = max(peak, job.peak())
                 if memory_mb and peak > memory_mb * 1024 * 1024:
                     reason = "MLE"
                     break
                 if output.stat().st_size > output_limit or error.stat().st_size > 1024 * 1024:
                     reason = "OLE"
                     break
+                # Python's sleep uses a high-resolution timer on Windows.
+                # Popen.wait(timeout=.003) rounds to about 15 ms there and
+                # adds substantial latency to short programs and checkers.
                 time.sleep(0.003)
             if job:
                 peak = max(peak, job.peak())

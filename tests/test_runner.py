@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+import shutil
+import subprocess
 import sys
 import tempfile
 import threading
@@ -44,3 +46,68 @@ class ProcessTests(unittest.TestCase):
         self.assertEqual(result.verdict, "Cancelled")
         result = self.run_python("raise RuntimeError('controlled')", timeout_ms=3000)
         self.assertEqual(result.verdict, "RE")
+
+
+@unittest.skipUnless(os.name == "nt" and shutil.which("g++"), "Windows Job regression tests require GCC")
+class WindowsJobTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.temp = tempfile.TemporaryDirectory(prefix="native job space ")
+        cls.root = Path(cls.temp.name)
+        cls.binary = cls.root / "program.exe"
+        source = cls.root / "program.cpp"
+        source.write_text(r'''
+#include <windows.h>
+#include <cstdio>
+#include <cstring>
+#include <string>
+int main(int argc, char** argv) {
+    if (argc < 2) return 0;
+    if (!std::strcmp(argv[1], "memory")) {
+        volatile char* p = new char[40*1024*1024];
+        for (int i=0; i<40*1024*1024; ++i) p[i] = 1;
+        Sleep(120000); return 0;
+    }
+    if (!std::strcmp(argv[1], "sleep")) { Sleep(120000); return 0; }
+    int count = !std::strcmp(argv[1], "many") ? 20 : 2;
+    FILE* file = std::fopen("children.pid", "w");
+    for (int i=0; i<count; ++i) {
+        std::string command = std::string("\"") + argv[0] + "\" " + (count == 2 ? "memory" : "sleep");
+        STARTUPINFOA si = {}; si.cb = sizeof(si);
+        PROCESS_INFORMATION pi = {};
+        if (!CreateProcessA(nullptr, command.data(), nullptr, nullptr, FALSE,
+                            CREATE_NO_WINDOW, nullptr, nullptr, &si, &pi)) return 1;
+        std::fprintf(file, "%lu\n", pi.dwProcessId);
+        CloseHandle(pi.hThread); CloseHandle(pi.hProcess);
+    }
+    std::fclose(file);
+    Sleep(count == 2 ? 120000 : 100); return 0;
+}
+''')
+        try:
+            subprocess.run([shutil.which("g++"), "-O2", str(source), "-o", str(cls.binary)], check=True, capture_output=True)
+        except Exception:
+            cls.temp.cleanup()
+            raise
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def execute(self, *args, **kwargs):
+        return run([str(self.binary), *args], self.root, self.root / "stdout", self.root / "stderr", **kwargs)
+
+    def assert_children_gone(self):
+        for pid in (self.root / "children.pid").read_text().splitlines():
+            self.assertFalse(psutil.pid_exists(int(pid)))
+
+    def test_job_members_grow_and_cleanup_after_root_exit(self):
+        result = self.execute("many", timeout_ms=10000, memory_mb=1024)
+        self.assertEqual(result.verdict, "OK")
+        self.assertEqual(len((self.root / "children.pid").read_text().splitlines()), 20)
+        self.assert_children_gone()
+
+    def test_aggregate_child_memory(self):
+        result = self.execute("spawn", timeout_ms=10000, memory_mb=64)
+        self.assertEqual(result.verdict, "MLE")
+        self.assert_children_gone()
