@@ -15,6 +15,7 @@ from pathlib import Path
 
 from .problems import Problem
 from .runner import run
+from .diagnostics import emit
 
 
 @dataclass
@@ -143,6 +144,7 @@ class Judge:
         checker_signal = StopSignal(self.stop, checker_stop)
         logs, checked, pending = [], 0, None
         verdict, message = "AC", ""
+        timeout_rechecked = False
 
         def check(case, folder, entry):
             try:
@@ -188,6 +190,20 @@ class Judge:
                         entry["discarded"] = True
                         break
                     checked += 1
+                if result.verdict == "TLE" and not timeout_rechecked and not program_signal.is_set():
+                    # A transient local startup stall must not decide a verdict
+                    # without confirmation. Retry at most once per submission,
+                    # with identical limits and separate files for both attempts.
+                    timeout_rechecked = True
+                    entry["attempts"] = [{"directory": ".", "run": asdict(result)}]
+                    folder = folder / "retry-1"
+                    folder.mkdir(parents=True, exist_ok=True)
+                    logging.warning("Rechecking TLE: %s case %s in %s", p.id, case.name, work)
+                    result = run(command, work, folder / "program.out", folder / "program.err",
+                                 input_file=case.input, timeout_ms=p.config["timeLimitMs"],
+                                 memory_mb=p.config["memoryLimitMb"], stop=program_signal)
+                    entry["attempts"].append({"directory": "retry-1", "run": asdict(result)})
+                    entry["run"] = asdict(result)
                 if result.verdict != "OK":
                     verdict = "Queued" if result.verdict == "Cancelled" else result.verdict
                     message = ""
@@ -276,9 +292,11 @@ class Judge:
             try:
                 sub = self.storage.get_submission(sub_id)
                 if sub:
+                    emit("judge_start", submission=sub_id, problem=sub["problem"], language=sub["language"])
                     result = self.evaluate(sub["problem"], sub["source"], sub["language"], sub_id,
                                            lambda state: self.storage.update(sub_id, verdict=state))
                     self.storage.update(sub_id, **asdict(result))
+                    emit("judge_complete", submission=sub_id, **asdict(result))
             finally:
                 self.queue.task_done()
 

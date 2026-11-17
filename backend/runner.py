@@ -11,6 +11,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from threading import Event
+from .diagnostics import emit, process_info
 
 import psutil
 
@@ -130,6 +131,8 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
                 root = None  # A very short POSIX process may already be reaped.
             # Do not charge OS process creation, executable scanning or Job
             # setup to the contestant. On Windows the process is still suspended.
+            emit("process_start", child=process.pid, command=command, cwd=str(cwd),
+                 timeout_ms=timeout_ms, memory_mb=memory_mb, output=str(output))
             started = time.monotonic()
             if job:
                 job.attach_resume(process)
@@ -142,7 +145,18 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
                     reason = "Cancelled"
                     break
                 if (time.monotonic() - started) * 1000 >= timeout_ms:
+                    # The monitor may have been descheduled after the loop's
+                    # poll. Do not kill/classify a child using that stale state.
+                    if process.poll() is not None:
+                        emit("deadline_recheck_exit", child=process.pid, command=command,
+                             elapsed_ms=(time.monotonic()-started)*1000, output=str(output),
+                             exit_code=process.returncode)
+                        break
                     reason = "TLE"
+                    emit("process_timeout", child=process_info(root) if root else None,
+                         elapsed_ms=(time.monotonic()-started)*1000, command=command,
+                         output=str(output), stdout_bytes=output.stat().st_size,
+                         stderr_bytes=error.stat().st_size)
                     break
                 used = 0
                 try:
@@ -208,7 +222,10 @@ def run(command: list[str], cwd: Path, output: Path, error: Path, *, input_file:
         if not reason and (output.stat().st_size > output_limit or error.stat().st_size > 1024 * 1024):
             reason = "OLE"
         verdict = reason or ("OK" if process.returncode == 0 else "RE")
-        return RunResult(verdict, process.returncode, int((time.monotonic() - started) * 1000), peak // 1024)
+        elapsed_ms = int((time.monotonic() - started) * 1000)
+        emit("process_complete", child=process.pid, verdict=verdict, command=command,
+             output=str(output), elapsed_ms=elapsed_ms, peak_bytes=peak)
+        return RunResult(verdict, process.returncode, elapsed_ms, peak // 1024)
     finally:
         if job:
             job.close()

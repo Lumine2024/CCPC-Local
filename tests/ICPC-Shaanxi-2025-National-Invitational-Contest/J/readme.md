@@ -4,9 +4,13 @@ This workspace is for internal problem authoring, data generation, and local ver
 
 ## Run
 
+从仓库根目录执行：
+
 ```powershell
-./scripts/run-all-tests.ps1 -Workspace "examples/shaanxi-2025-j-message"
+python scripts/acceptance.py
 ```
+
+该脚本验收全部附带题目；启动与环境说明见 [README](../../../README.md)。
 
 ## `config.json`
 

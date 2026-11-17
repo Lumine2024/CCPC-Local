@@ -1,4 +1,5 @@
 """Browser regression for numbered and unnumbered Markdown sample pairs."""
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -24,8 +25,9 @@ def pair(label, source, answer):
     return [{'label': f'input {label}', 'text': source}, {'label': f'output {label}', 'text': answer}]
 
 
-def fixture(page, markdown):
-    page.evaluate("text => document.querySelector('#content').replaceChildren(renderMarkdown(text, 'B'))", markdown)
+def fixture(page, markdown, pid):
+    page.evaluate("({text, pid}) => document.querySelector('#content').replaceChildren(renderMarkdown(text, pid))",
+                  {'text': markdown, 'pid': pid})
 
 
 def fence(kind, value):
@@ -33,12 +35,15 @@ def fence(kind, value):
 
 
 def main():
-    output = ROOT / 'tmp/sample-acceptance'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--config', type=Path, default=ROOT / 'docs/fixtures/sample-pairs.json')
+    args = parser.parse_args()
+    config = json.loads(args.config.read_text(encoding='utf-8'))
+    output = ROOT / config['output']
     output.mkdir(parents=True, exist_ok=True)
-    workspace = ROOT / 'uestc-school-contest-prelimery/ccpc-local'
     report = {'success': False, 'checks': [], 'problems': [], 'pageErrors': []}
     with tempfile.TemporaryDirectory(prefix='state-', dir=output) as data:
-        app = App(workspace / 'problems', workspace / 'contest.txt', Path(data), start_worker=False)
+        app = App(ROOT / config['problems'], ROOT / config['history'], Path(data), start_worker=False)
         server = Server(('127.0.0.1', 0), app)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
@@ -61,35 +66,33 @@ def main():
                     assert page.locator('#statement h3').evaluate_all(r'''nodes => nodes.filter(n =>
                         /^样例 \d+$/.test(n.textContent)).every(n => n.nextElementSibling.classList.contains('samples'))''')
                     report['problems'].append({'id': pid, 'samplePairs': len(cases), 'success': True})
-                report['checks'].append('All 16 UESTC statements: one input/output pair under each sample heading, original order and text')
-                page.goto(url + '#problem/B')
-                expect(page.locator('#statement .samples')).to_have_count(2)
+                report['checks'].append(f'All {len(app.problems)} statements preserve sample order and text')
+                display = config['display_problem']
+                sample_count = sum(c.group == 'sample' for c in app.problems[display].cases)
+                page.goto(url + f'#problem/{display}')
+                expect(page.locator('#statement .samples')).to_have_count(sample_count)
                 page.evaluate('navigator.clipboard.writeText = async text => { window.copiedSample = text; }')
                 for button, item in zip(page.locator('#statement .copy-button').all(), [b for g in groups(page) for b in g]):
                     button.click()
                     assert page.evaluate('window.copiedSample') == item['text']
-                page.screenshot(path=str(output / 'uestc-B-desktop.png'), full_page=True)
+                page.screenshot(path=str(output / 'samples-desktop.png'), full_page=True)
                 page.set_viewport_size({'width': 390, 'height': 844})
-                expect(page.locator('#statement .samples')).to_have_count(2)
-                assert [len(group) for group in groups(page)] == [2, 2]
-                page.screenshot(path=str(output / 'uestc-B-mobile.png'), full_page=True)
-                report['checks'].append('Screenshot B regression: desktop/mobile pairing and all four copy buttons preserve exact text')
-                fixture(page, fence('input', 'a') + fence('input', 'b') + fence('output', 'A') + fence('output', 'B'))
-                assert groups(page) == [pair(1, 'a\n', 'A\n'), pair(2, 'b\n', 'B\n')]
-                fixture(page, fence('output2', 'B') + fence('input1', 'a') + fence('input2', 'b') + fence('output1', 'A'))
-                assert groups(page) == [pair(2, 'b\n', 'B\n'), pair(1, 'a\n', 'A\n')]
-                fixture(page, fence('input3', 'c') + fence('output3', 'C') + fence('input', 'a') + fence('output', 'A') +
-                        fence('input1', 'd') + fence('output1', 'D') + fence('input', 'b') + fence('output', 'B'))
-                assert groups(page) == [pair(3, 'c\n', 'C\n'), pair(2, 'a\n', 'A\n'),
-                                        pair(1, 'd\n', 'D\n'), pair(4, 'b\n', 'B\n')]
+                expect(page.locator('#statement .samples')).to_have_count(sample_count)
+                assert all(len(group) == 2 for group in groups(page))
+                page.screenshot(path=str(output / 'samples-mobile.png'), full_page=True)
+                report['checks'].append('Desktop/mobile pairing and copy buttons preserve exact text')
+                for case in config['fixtures']:
+                    fixture(page, ''.join(fence(kind, value) for kind, value in case['blocks']), display)
+                    assert groups(page) == [pair(label, source, answer) for label, source, answer in case['expected']]
                 report['checks'].append('Unnumbered batches, out-of-order numbered blocks, and mixed fences pair without merging')
-                reference = ROOT / 'tests/ICPC-Shaanxi-2025-National-Invitational-Contest/L'
-                fixture(page, (reference / 'docs/statement.md').read_text(encoding='utf-8'))
+                reference = app.problems[config['reference_problem']]
+                fixture(page, reference.statement, reference.id)
                 actual = groups(page)
-                assert len(actual) == 5 and all(len(group) == 2 for group in actual)
-                assert actual[0][0]['text'] == (reference / 'exported-tests/sample/sample.in').read_text(encoding='utf-8')
+                reference_samples = [c for c in reference.cases if c.group == 'sample']
+                assert len(actual) == len(reference_samples) and all(len(group) == 2 for group in actual)
+                assert actual[0][0]['text'] == reference_samples[0].input.read_text(encoding='utf-8')
                 assert not report['pageErrors']
-                report['checks'].append('Existing Shaanxi L statement retains five numbered sample pairs and unchanged copy text')
+                report['checks'].append('Reference statement retains numbered sample pairs and unchanged copy text')
                 report['success'] = True
                 browser.close()
         finally:

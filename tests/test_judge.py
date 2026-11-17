@@ -142,7 +142,45 @@ class PipelineTests(JudgeFixture, unittest.TestCase):
 
         result = self.evaluate(fake_run)
         self.assertEqual((result.verdict, result.checked), ("TLE", 1))
-        self.assertEqual(programs, [0, 1]); self.assertEqual(checks, [0])
+        self.assertEqual(programs, [0, 1, 1]); self.assertEqual(checks, [0])
+
+    def test_transient_timeout_rechecks_same_limits_and_checks_retry_output(self):
+        attempts = []
+
+        def fake_run(command, cwd, output, error, **kwargs):
+            if output.name == "program.out":
+                attempts.append(kwargs)
+                output.write_text(str(len(attempts)))
+                if len(attempts) == 1:
+                    return RunResult("TLE", 1, 1000, 200)
+                return RunResult("OK", 0, 10, 100)
+            contestant = Path(command[2])
+            self.assertNotEqual(contestant.read_text(), "1")
+            return RunResult("OK", 0, 1, 1)
+
+        result = self.evaluate(fake_run)
+        self.assertEqual((result.verdict, result.checked), ("AC", 3))
+        self.assertEqual(len(attempts), 4)
+        self.assertEqual(attempts[0], attempts[1])
+        report = json.loads((self.judge.root / "jobs/pipeline/result.json").read_text())
+        first = report["cases"][0]
+        self.assertEqual([x["run"]["verdict"] for x in first["attempts"]], ["TLE", "OK"])
+        self.assertEqual(first["run"]["verdict"], "OK")
+
+    def test_timeout_confirmation_is_bounded_per_submission(self):
+        calls = []
+
+        def fake_run(command, cwd, output, error, **kwargs):
+            if output.name == "program.out":
+                n = int(kwargs["input_file"].stem)
+                calls.append(n)
+                output.write_text(str(n))
+                return RunResult("OK", 0, 10, 100) if len(calls) == 2 else RunResult("TLE", 1, 1000, 200)
+            return RunResult("OK", 0, 1, 1)
+
+        result = self.evaluate(fake_run)
+        self.assertEqual((result.verdict, result.checked), ("TLE", 1))
+        self.assertEqual(calls, [0, 0, 1])
 
     def test_last_checker_failure_cannot_return_ac(self):
         for code, expected in [(1, "WA"), (2, "WA"), (4, "WA"), (8, "WA"), (3, "Judge Error")]:

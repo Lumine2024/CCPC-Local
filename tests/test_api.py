@@ -1,15 +1,18 @@
 import hashlib
 import http.cookiejar
+import http.client
 import json
 from pathlib import Path
 import tempfile
 import threading
+import socket
 import unittest
+from unittest.mock import Mock, patch
 import urllib.error
 import urllib.request
 
 from backend.contest import App, APIError
-from backend.server import Server
+from backend.server import Handler, Server
 from test_core import fixture
 
 
@@ -57,12 +60,61 @@ class APITests(unittest.TestCase):
             self.request("/api/submissions", {"problem": "A", "language": "cpp", "source": "x"})
         self.assertEqual(result.exception.code, 400)
 
+    def test_disconnect_does_not_send_500_or_stop_server(self):
+        sid = self.start()
+        sub_id = self.submit(sid)
+        for stage in ("end_headers", "body"):
+            for error in (ConnectionAbortedError, ConnectionResetError, BrokenPipeError, TimeoutError):
+                with self.subTest(stage=stage, error=error):
+                    handler = Handler.__new__(Handler)
+                    handler.server = self.server
+                    handler.path = f"/api/state?session_id={sid}"
+                    handler.headers = {"Host": f"127.0.0.1:{self.server.server_port}"}
+                    handler.identity = Mock(return_value=("owner", self.csrf))
+                    handler.send_response = Mock()
+                    handler.send_header = Mock()
+                    handler.end_headers = Mock(side_effect=error() if stage == "end_headers" else None)
+                    handler.wfile = Mock()
+                    if stage == "body":
+                        handler.wfile.write.side_effect = error()
+                    with patch.object(self.app, "state", return_value={}), patch("backend.server.LOG") as log:
+                        handler.dispatch(False)
+                        handler.send_response.assert_called_once_with(200)
+                        log.exception.assert_not_called()
+                        self.assertTrue(handler.close_connection)
+        # The queued submission survives and normal requests still work.
+        self.assertEqual(self.request(f"/api/submissions/{sub_id}")["verdict"], "Queued")
+
     def test_owner_isolation(self):
         sid = self.start(); sub_id = self.submit(sid)
         other = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
         for path in (f"/api/state?session_id={sid}", f"/api/submissions/{sub_id}"):
             with self.assertRaises(urllib.error.HTTPError) as result: self.request(path, client=other)
             self.assertEqual(result.exception.code, 403)
+
+    def test_submission_response_disconnect_preserves_one_queued_job(self):
+        sid = self.start()
+        with patch.object(Handler, "send_body", side_effect=ConnectionAbortedError()), patch("backend.server.LOG") as log:
+            with self.assertRaises(http.client.RemoteDisconnected):
+                self.submit(sid)
+            log.exception.assert_not_called()
+        subs = self.request(f"/api/state?session_id={sid}")["submissions"]
+        self.assertEqual(len(subs), 1)
+        self.assertEqual(subs[0]["verdict"], "Queued")
+        self.assertEqual(self.app.judge.queue.qsize(), 1)
+
+    def test_idle_and_partial_header_connections_expire(self):
+        self.server.request_timeout = 0.2
+        connections = [socket.create_connection(self.server.server_address, timeout=2) for _ in range(2)]
+        try:
+            connections[1].sendall(b"GET /api/state HTTP/1.1\r\nHost:")
+            for connection in connections:
+                # Blocking read waits for the server to close; no polling loop.
+                self.assertEqual(connection.recv(1), b"")
+            self.assertIn("csrf", self.request("/api/state"))
+        finally:
+            for connection in connections:
+                connection.close()
 
     def test_csrf_origin_and_host(self):
         for headers in ({"X-CSRF-Token": "bad"}, {"Origin": "http://other.example"}, {"Host": "other.example"}):

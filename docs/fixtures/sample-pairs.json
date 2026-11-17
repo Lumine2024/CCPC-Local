@@ -1,0 +1,12 @@
+{
+  "problems": "tests/ICPC-Shaanxi-2025-National-Invitational-Contest",
+  "history": "tests/contest.txt",
+  "output": "tmp/sample-acceptance",
+  "display_problem": "L",
+  "reference_problem": "L",
+  "fixtures": [
+    {"blocks": [["input", "a"], ["input", "b"], ["output", "A"], ["output", "B"]], "expected": [[1, "a\n", "A\n"], [2, "b\n", "B\n"]]},
+    {"blocks": [["output2", "B"], ["input1", "a"], ["input2", "b"], ["output1", "A"]], "expected": [[2, "b\n", "B\n"], [1, "a\n", "A\n"]]},
+    {"blocks": [["input3", "c"], ["output3", "C"], ["input", "a"], ["output", "A"], ["input1", "d"], ["output1", "D"], ["input", "b"], ["output", "B"]], "expected": [[3, "c\n", "C\n"], [2, "a\n", "A\n"], [1, "d\n", "D\n"], [4, "b\n", "B\n"]]}
+  ]
+}

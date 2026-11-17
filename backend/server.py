@@ -6,12 +6,15 @@ import logging
 import mimetypes
 import re
 import secrets
+import threading
+import time
 from http import cookies
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from .contest import APIError
+from .diagnostics import emit
 
 FRONTEND = Path(__file__).resolve().parents[1] / "frontend"
 LOG = logging.getLogger("ccpc.http")
@@ -19,17 +22,48 @@ LOG = logging.getLogger("ccpc.http")
 
 class Server(ThreadingHTTPServer):
     daemon_threads = True
+    request_timeout = 15
 
     def __init__(self, address, app):
         self.app = app
+        self.tracking_lock = threading.Lock()
+        self.active_requests = {}
         super().__init__(address, Handler)
 
 
 class Handler(BaseHTTPRequestHandler):
     server_version = "CCPC-Local/1.0"
 
+    def setup(self):
+        super().setup()
+        # Bound idle preconnections, partial headers and blocked GET writes,
+        # not only POST bodies. Otherwise each can retain a thread forever.
+        self.connection.settimeout(self.server.request_timeout)
+
+    def handle(self):
+        key = threading.get_ident()
+        started = time.monotonic()
+        with self.server.tracking_lock:
+            self.server.active_requests[key] = dict(started=started, client=self.client_address)
+        try:
+            super().handle()
+        except (ConnectionError, TimeoutError) as exc:
+            emit("http_disconnect", stage="handle", error=repr(exc),
+                 winerror=getattr(exc, "winerror", None), client=self.client_address)
+            self.close_connection = True
+        finally:
+            with self.server.tracking_lock:
+                self.server.active_requests.pop(key, None)
+            emit("http_complete", client=self.client_address, path=getattr(self, "path", ""),
+                 elapsed_s=time.monotonic()-started)
+
     def log_message(self, fmt, *args):
         LOG.info(fmt, *args)
+
+    def log_error(self, fmt, *args):
+        emit("http_protocol_error", client=self.client_address, message=fmt % args,
+             path=getattr(self, "path", ""))
+        super().log_error(fmt, *args)
 
     def identity(self):
         jar = cookies.SimpleCookie()
@@ -47,6 +81,17 @@ class Handler(BaseHTTPRequestHandler):
 
     def send(self, data, status=200, mime="application/json; charset=utf-8"):
         body = json.dumps(data, ensure_ascii=False).encode("utf-8") if isinstance(data, (dict, list)) else data
+        try:
+            self.send_body(body, status, mime)
+        except (ConnectionError, TimeoutError) as exc:
+            # Refresh/navigation can abort either the headers or the body
+            # (WinError 10053 included). Never try a second response on it.
+            self.close_connection = True
+            LOG.info("Client disconnected while sending %s", self.path)
+            emit("http_disconnect", stage="send", path=self.path, error=repr(exc),
+                 winerror=getattr(exc, "winerror", None))
+
+    def send_body(self, body, status, mime):
         self.send_response(status)
         self.send_header("Content-Type", mime)
         self.send_header("Content-Length", str(len(body)))
@@ -57,10 +102,7 @@ class Handler(BaseHTTPRequestHandler):
         if getattr(self, "new_cookie", None):
             self.send_header("Set-Cookie", self.new_cookie)
         self.end_headers()
-        try:
-            self.wfile.write(body)
-        except (ConnectionResetError, BrokenPipeError):
-            pass
+        self.wfile.write(body)
 
     def do_GET(self):
         self.dispatch(False)
@@ -70,6 +112,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def dispatch(self, write):
         self.new_cookie = None
+        with self.server.tracking_lock:
+            current = self.server.active_requests.get(threading.get_ident())
+            if current is not None:
+                current.update(path=self.path, stage="dispatch")
         try:
             port = self.server.server_port
             allowed = {f"127.0.0.1:{port}", f"localhost:{port}"}
@@ -94,7 +140,12 @@ class Handler(BaseHTTPRequestHandler):
                 if not 0 < length <= 2 * 1024 * 1024:
                     raise APIError("请求为空或过大", 413)
                 self.connection.settimeout(15)
-                payload = json.loads(self.rfile.read(length))
+                try:
+                    payload = json.loads(self.rfile.read(length))
+                except (ConnectionError, TimeoutError):
+                    self.close_connection = True
+                    LOG.info("Client disconnected while reading %s", self.path)
+                    return
                 if not isinstance(payload, dict):
                     raise APIError("请求须为 JSON 对象")
                 if path == "/api/vp":

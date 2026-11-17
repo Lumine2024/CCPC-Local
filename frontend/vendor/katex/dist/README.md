@@ -94,7 +94,7 @@ Learn more about using KaTeX [on the website](https://katex.org)!
 
 ### Code Contributors
 
-This project exists thanks to all the people who contribute code. If you'd like to help, see [our guide to contributing code](CONTRIBUTING.md).
+This project exists thanks to all the people who contribute code. If you'd like to help, see [our guide to contributing code](https://github.com/KaTeX/KaTeX/blob/v0.16.33/CONTRIBUTING.md).
 <a href="https://github.com/KaTeX/KaTeX/graphs/contributors"><img src="https://contributors-svg.opencollective.com/katex/contributors.svg?width=890&button=false" alt="Code contributors" /></a>
 
 ### Financial Contributors

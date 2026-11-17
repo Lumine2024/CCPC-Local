@@ -43,6 +43,7 @@ launcher.py
 │   ├── storage.py                    # SQLite 持久化及中断恢复
 │   ├── judge.py                      # 编译、checker 缓存和单 worker 队列
 │   ├── runner.py                     # 进程执行、资源监测和进程树清理
+│   ├── diagnostics.py                # 可选持续诊断、资源采样和轮转日志
 │   └── server.py                     # HTTP、会话身份、CSRF 和静态资源白名单
 ├── frontend/
 │   ├── index.html                    # 页面骨架、导航与侧栏容器
@@ -67,7 +68,7 @@ launcher.py
 │   ├── performance/                 # 性能前后数据、日志与验收结果
 │   └── acceptance/                   # 7 份结果 JSON、测试日志、9 张截图
 ├── tmp/                              # 本机状态、评测产物和验收运行目录
-└── bin/                              # 当前为空；应用不依赖此目录
+└── bin/                              # 可选本机目录，不随 Git 提供；应用不依赖此目录
 ```
 
 `.venv/` 是本机 Python 环境，`__pycache__/` 是 Python 自动生成的缓存。应用源码、只读比赛资料和可再生成的运行产物分别位于上述目录中。
@@ -184,7 +185,7 @@ pwsh launcher.ps1 -ProblemList tests/ICPC-Shaanxi-2025-National-Invitational-Con
 | 题目内路径 | 内容与用途 |
 | --- | --- |
 | `config.json` | 标题、题型、时限 / 内存、标准、checker 与构建配置 |
-| `readme.md` | 原题目工作区说明，部分维护命令引用外部 skill |
+| `readme.md` | 题目工作区说明，验收入口指向本仓库 README 与 Python 脚本 |
 | `docs/statement.md` | 网页题面；实际入口以 `config.statement` 为准 |
 | `docs/tutorial.md`、文档 `.tex` | 内部题解与文档副本，OJ 不提供下载 |
 | `docs/assets/` | D / I 的本地配图和图形维护用 HTML |
@@ -202,9 +203,9 @@ pwsh launcher.ps1 -ProblemList tests/ICPC-Shaanxi-2025-National-Invitational-Con
 
 ## 7. 真实判题与 skill 的关系
 
-项目兼容 [ICPC-Problem-Creator.skill](https://github.com/Lumine2024/ICPC-Problem-Creator.skill) 的题包配置、导出数据和 testlib checker 调用方式。运行时由本仓库 Python 实现，不依赖作者机器的 `.claude` 路径，也未复制其 PowerShell 脚本。来源和许可记录见 [THIRD_PARTY.md](THIRD_PARTY.md)。
+项目兼容 [ICPC-Problem-Creator.skill](https://github.com/Lumine2024/ICPC-Problem-Creator.skill) 的题包配置、导出数据和 testlib checker 调用方式。运行时由本仓库 Python 实现，不依赖外部 skill 的本机安装，也未复制其 PowerShell 脚本。来源和许可记录见 [THIRD_PARTY.md](THIRD_PARTY.md)。
 
-原题包维护所参考的本机 skill 入口是 `C:\Users\123\.claude\skills\icpc-problem-creator\SKILL.md`，其 `scripts/run-all-tests.ps1`、`scripts/export-testdata.ps1`、`scripts/lib/icpc-common.ps1` 和 `subskills/judge-validator/SKILL.md` 属于外部 skill。出题、重建测试与 Hydro 导出不在 OJ 用户提交链路中。
+原题包来自上述外部 skill 的工作区格式。其维护脚本不随本仓库提供；出题、重建测试与 Hydro 导出不在 OJ 用户提交链路中。本仓库可直接使用的启动与验收命令见 [README.md](README.md)。
 
 `backend/judge.py::Judge` 的实际工作流：
 
@@ -255,6 +256,7 @@ Windows 使用挂起启动、Job Object 和派生进程跟踪；监控优先查�
 | `scripts/launcher_acceptance.py` | Python 环境回退、空格路径、占用端口、错误环境与正常退出；`tmp/acceptance/launcher-results.json` |
 | `scripts/package_acceptance.py` | 读取已通过结果，将报告、JSON、日志和截图整理到 `docs/` |
 | `scripts/vendor_assets.py` | 下载固定 npm 版本、校验 integrity、重建 `frontend/vendor/`；仅依赖维护时联网 |
+| `scripts/server_soak.py` | 按外部 JSON 配置执行真实 HTTP / 判题长测；示例及运行生成文件见 [持续诊断说明](docs/SERVER-DIAGNOSTICS.md) |
 
 快速规则 / API / 进程回归入口：
 

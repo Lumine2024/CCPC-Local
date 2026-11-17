@@ -7,6 +7,8 @@
 - **Playwright 1.58.0**：仅浏览器验收使用，Apache-2.0；由 `requirements-dev.txt` 安装，项目：<https://github.com/microsoft/playwright-python>。
 - 仓库原有 **testlib.h**、题包与历史资料保持原样和原始声明，未重新授权；testlib 来源与许可见各题 `include/testlib.h`。
 
-配置语义、testlib checker 调用与题包维护方式参考 [ICPC-Problem-Creator.skill](https://github.com/Lumine2024/ICPC-Problem-Creator.skill)。本项目的 Python 运行时自行实现，未复制该 skill 的 PowerShell 脚本，也不依赖 `C:\Users\123\.claude`。
+配置语义、testlib checker 调用与题包维护方式参考 [ICPC-Problem-Creator.skill](https://github.com/Lumine2024/ICPC-Problem-Creator.skill)。本项目的 Python 运行时自行实现；外部 skill 的安装目录与维护脚本不属于本仓库依赖。
 
 前端分发文件来源、精确版本和 npm tarball integrity 记录于 `frontend/vendor/manifest.json`，可用 `scripts/vendor_assets.py` 重建。运行时无需联网下载任何前端依赖。
+
+本仓库的发行子集将 KaTeX README 中未分发的贡献指南改为对应上游版本的在线链接，并移除指向未分发 source map 的调试注释；许可证与运行代码保留。

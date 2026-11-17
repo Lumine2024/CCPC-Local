@@ -5,7 +5,8 @@ param(
     [Parameter(Mandatory)][string]$Submissions,
     [int]$Port = 8765,
     [string]$DataDir,
-    [switch]$NoBrowser
+    [switch]$NoBrowser,
+    [double]$DiagnosticsInterval = 0
 )
 $ErrorActionPreference = 'Stop'
 $venvPython = Join-Path $PSScriptRoot '.venv/Scripts/python.exe'
@@ -16,5 +17,6 @@ $pythonCommand = if (Test-Path -LiteralPath $venvPython) { $venvPython } else { 
 $launchArgs = @((Join-Path $PSScriptRoot 'launcher.py'), '--problem-list', $ProblemList, '--submissions', $Submissions, '--port', "$Port")
 if ($DataDir) { $launchArgs += @('--data-dir', $DataDir) }
 if ($NoBrowser) { $launchArgs += '--no-browser' }
+if ($DiagnosticsInterval) { $launchArgs += @('--diagnostics-interval', "$DiagnosticsInterval") }
 & $pythonCommand @launchArgs
 exit $LASTEXITCODE

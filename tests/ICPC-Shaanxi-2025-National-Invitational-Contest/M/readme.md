@@ -4,6 +4,10 @@
 
 `config.json` 驱动样例、边界、随机和满规模测试，并交叉验证两份 C++ 解及小规模 Python 解。验证命令：
 
+从仓库根目录执行：
+
 ```powershell
-./scripts/run-all-tests.ps1 -Workspace examples/shaanxi-2025-m-kingdom
+python scripts/acceptance.py
 ```
+
+该脚本验收全部附带题目；启动与环境说明见 [README](../../../README.md)。

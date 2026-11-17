@@ -1,6 +1,6 @@
 # CCPC Local
 
-在浏览器中进行本地 VP：回放历史队伍提交，真实编译判题，体验 CCPC 新榜单的阈值隐藏与四小时封榜。附带 2025 ICPC 陕西邀请赛 A–M 共 13 题、352 组评测数据。
+在浏览器中进行本地 VP：回放历史队伍提交，真实编译判题，体验 CCPC 新榜单的阈值隐藏与四小时封榜。
 
 ## 安装和启动
 
@@ -30,7 +30,7 @@ python3 -m venv .venv
 
 ## 使用
 
-另有 [UESTC 校赛初赛工作区](uestc-school-contest-prelimery/README.md)：16 道可判题题目、418 组数据，以及从十二小时榜单按每队估计起点截取、包含近似 RJ 的五小时历史。导入其他 Polygon ZIP 的可复用脚本和榜单转换说明见 [scripts/POLYGON_IMPORT.md](scripts/POLYGON_IMPORT.md)。
+另有 [2025 ICPC 陕西邀请赛](tests/ICPC-Shaanxi-2025-National-Invitational-Contest)：A–M 共 13 题、352 组评测数据。导入其他 Polygon ZIP 的可复用脚本和榜单转换说明见 [scripts/POLYGON_IMPORT.md](scripts/POLYGON_IMPORT.md)。
 
 1. 在首页设置队伍名，点击“开始 VP”。历史队伍从零时刻与您同步回放。
 2. 点击题号阅读题面，使用每个样例的复制按钮。题目页和提交标签均可粘贴代码或上传 `.cpp` / `.py` 源文件。
@@ -68,6 +68,8 @@ Windows 在挂起进程上先附加 Job Object，再恢复运行，退出 / 取�
 当前真实验收平台为 Windows；Linux / macOS 路径及进程组实现已提供，未在这些系统进行运行验收。
 
 ## 状态、缓存和日志
+
+文档中的 `tmp/`、`build/`、虚拟环境及评测任务路径是本机安装或运行后生成的目录，不随 Git 提供；已有验收快照位于 `docs/acceptance/`、`docs/performance/` 和 `docs/pipeline/`。原始日志中的绝对路径仅记录当时环境，不是当前仓库的文件依赖。
 
 默认位于 `tmp/ccpc-local/`，也可用 `--data-dir` 更改：
 
@@ -112,7 +114,7 @@ Windows 在挂起进程上先附加 Job Object，再恢复运行，退出 / 取�
 
 `scripts/ime_acceptance.py` 验证 VP 队伍名在轮询刷新时保留光标、选区、空白草稿及中文组合输入，选词 Enter 不误开启 VP，确认后正常提交并支持重新 VP。测试通过 Chromium 原生组合输入事件模拟输入法，结果保存至 `tmp/ime-acceptance/results.json`；未自动操作搜狗客户端候选窗口。
 
-`scripts/sample_acceptance.py` 验证校赛工作区所有题目的多组样例、输入输出配对与原文复制，并覆盖已有带编号样例及混合格式；结果与 B 题桌面、手机截图保存在 `tmp/sample-acceptance/`。
+`scripts/sample_acceptance.py` 默认通过 [样例配置](docs/fixtures/sample-pairs.json) 验证仓库自带陕西邀请赛全部题目的样例、输入输出配对与原文复制，并覆盖带编号样例及混合格式；结果与桌面、手机截图由脚本生成到 `tmp/sample-acceptance/`。可用 `--config` 指定其他配置。
 
 项目验收结论见 [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md)。前端依赖已内置；仅在维护时用 `scripts/vendor_assets.py` 从固定 npm 版本下载并校验 integrity，版本、来源和许可证见 `frontend/vendor/manifest.json` 和 [THIRD_PARTY.md](THIRD_PARTY.md)。判题配置和 checker 协议参考 [ICPC-Problem-Creator.skill](https://github.com/Lumine2024/ICPC-Problem-Creator.skill)，运行不依赖其本机安装目录。
 
@@ -130,6 +132,8 @@ Windows 在挂起进程上先附加 Job Object，再恢复运行，退出 / 取�
 写请求需 cookie 和从 `/api/state` 取得的 `X-CSRF-Token`。API 不接受客户端指定比赛时间。无全量历史事件接口。提交源代码最多 256 KiB，JSON 请求最多 2 MiB。
 
 常见错误：找不到 `g++` 时安装编译器并检查 `g++ --version`；缺少 psutil 时用实际启动 Python 安装 requirements；题包缺文件 / 数量不一致时修复输入，不能跳过测试；Judge Error 查看内部日志，checker 诊断不会发给选手；无法恢复旧会话时确认浏览器 cookie 与题包内容未改变。
+
+排查长时间运行问题，可在 PowerShell 启动命令增加 `-DiagnosticsInterval 30`，或给 Python 启动器增加 `--diagnostics-interval 30`。持续诊断、日志轮转及基于附带题包的长测命令见 [持续诊断说明](docs/SERVER-DIAGNOSTICS.md)。文档和配置的仓库路径核验范围见 [文件引用核验说明](docs/REPOSITORY-REFERENCES.md)。
 
 ## 开源协议
 

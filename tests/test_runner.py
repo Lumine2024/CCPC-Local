@@ -7,6 +7,7 @@ import tempfile
 import threading
 import time
 import unittest
+from unittest.mock import patch
 
 import psutil
 from backend.runner import run
@@ -46,6 +47,32 @@ class ProcessTests(unittest.TestCase):
         self.assertEqual(result.verdict, "Cancelled")
         result = self.run_python("raise RuntimeError('controlled')", timeout_ms=3000)
         self.assertEqual(result.verdict, "RE")
+
+    def test_scheduler_pause_after_poll_does_not_turn_finished_program_into_tle(self):
+        real_popen = subprocess.Popen
+
+        def delayed_popen(*args, **kwargs):
+            process = real_popen(*args, **kwargs)
+            real_poll = process.poll
+            delayed = False
+
+            def poll():
+                nonlocal delayed
+                code = real_poll()
+                if not delayed and code is None:
+                    delayed = True
+                    # Simulate the monitoring thread being descheduled after
+                    # observing a live process. The child exits during the gap.
+                    process.wait(timeout=3)
+                    threading.Event().wait(0.25)
+                return code
+
+            process.poll = poll
+            return process
+
+        with patch("backend.runner.subprocess.Popen", side_effect=delayed_popen):
+            result = self.run_python("pass", timeout_ms=200)
+        self.assertEqual(result.verdict, "OK")
 
 
 @unittest.skipUnless(os.name == "nt" and shutil.which("g++"), "Windows Job regression tests require GCC")

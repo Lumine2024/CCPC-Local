@@ -1,10 +1,12 @@
 # Polygon 包转换为 CCPC Local 工作区
 
-`polygon_to_workspace.py` 是可复用入口，支持包含 `contest.xml` 的比赛 ZIP，也支持只有一个 `problem.xml` 的单题 ZIP。从 XML 按比赛题号关联题目，而非按文件夹名字排序。依赖仓库已有的 psutil，以及支持 GNU++23 的 G++；导入过程不需要联网。
+[polygon_to_workspace.py](polygon_to_workspace.py) 是可复用入口，支持包含 `contest.xml` 的比赛 ZIP，也支持只有一个 `problem.xml` 的单题 ZIP。从 XML 按比赛题号关联题目，而非按文件夹名字排序。依赖仓库已有的 psutil，以及支持 GNU++23 的 G++；导入过程不需要联网。
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/polygon_to_workspace.py contest.zip --output output/contest-workspace
 ```
+
+示例中的 ZIP、XLSX、PDF 和布局 JSON 均是用户需自行提供的输入；`output/` 及 `tmp/` 下的内容是脚本生成的输出，不随 Git 提供。
 
 输出目录必须不存在。默认保留包中已经导出的输入和答案；缺失的生成器输入会按 XML 的 `cmd` 编译源文件并执行，缺失答案则运行 `tag="main"` 的标程。`--regenerate` 可重跑已有的生成器输入，并同步重建相应答案。命令参数保留原样，不额外添加测试序号作为 seed，也不执行包中 `.exe`、`.bat`、`.sh`。生成命令不经过 shell。
 
@@ -41,9 +43,9 @@ HTML 题面去掉在线脚本并把公式改为本地可渲染格式，图片复
 .\.venv\Scripts\python.exe scripts/standings_to_history.py board.xlsx --workspace output/contest-workspace --layout layout.json --source-duration-minutes 720 --warmup-minutes 20 --window-minutes 300 --rj-distribution uniform
 ```
 
-表头完整、单工作表的常规表格可以省略 `--layout`；多工作表用 `--sheet` 指定。AI/OCR 生成的表格通常需要人工核对 `problemColumns`、`teamColumns`、`acceptedColors`、`headerRows` 和 `ignoredRows`。这些布局字段的实例见 [standings-layout.json](../uestc-school-contest-prelimery/standings-layout.json)。不要对未知表格直接套用这个布局。
+表头完整、单工作表的常规表格可以省略 `--layout`；多工作表用 `--sheet` 指定。AI/OCR 生成的表格通常需要人工核对 `problemColumns`、`teamColumns`、`acceptedColors`、`headerRows` 和 `ignoredRows`。布局字段的处理逻辑见 [standings_to_history.py](standings_to_history.py)；`layout.json` 是需按实际表格自行提供的输入，不是仓库附带文件。
 
-本次按用户约定计算：原比赛为 720 分钟；每队以最早确认 AC 作为未知首投时间的近似，`估计开始分钟 = 最早 AC 分钟 - 20`，只保留 `0 <= AC 分钟 - 估计开始分钟 < 300` 的记录。开始分钟可能为负，遵循公式不额外截断。没有 AC 的队伍仍计入人数，开始时间记为未知。交互题的 AC 可用于估计开始时间，但从可加载历史中排除。
+上面的示例按 720 分钟原比赛计算；每队以最早确认 AC 作为未知首投时间的近似，`估计开始分钟 = 最早 AC 分钟 - 20`，只保留 `0 <= AC 分钟 - 估计开始分钟 < 300` 的记录。开始分钟可能为负，遵循公式不额外截断。没有 AC 的队伍仍计入人数，开始时间记为未知。交互题的 AC 可用于估计开始时间，但从可加载历史中排除。
 
 通过题报告总尝试次数为 k 时，在上一个严格早于该题 AC 的 AC 时间 x 与当前 AC 时间 y 之间插入 k−1 条 RJ；第一题的 x 为 0。同分钟 AC 使用相同的前一个时间。`uniform` 均匀插值；`exponential` 使用指数权重，时间集中在区间前段。先重建完整时间线，再截取五小时，因此窗口外 AC 之前的失败也可能保留。计分会按保留的失败次数增加每次 20 分钟罚时。
 
@@ -53,7 +55,7 @@ HTML 题面去掉在线脚本并把公式改为本地可渲染格式，图片复
 
 ## 核对没有文本层的 PDF
 
-`pdf_outline_standings.py` 针对本次 DOMjudge PDF 的矢量数字轮廓，在已目视确认的数字格子上建立模板，匹配绿色 AC 格子的时间，以及绿色/红色格子的总尝试次数。布局中需要提供位置、时间及小字号尝试次数的数字模板、颜色和可选汇总人数；无法明确匹配的数字列入未知项。脚本不调用在线 OCR。
+`pdf_outline_standings.py` 针对 DOMjudge PDF 的矢量数字轮廓，在已目视确认的数字格子上建立模板，匹配绿色 AC 格子的时间，以及绿色/红色格子的总尝试次数。布局中需要提供位置、时间及小字号尝试次数的数字模板、颜色和可选汇总人数；无法明确匹配的数字列入未知项。脚本不调用在线 OCR。
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install pymupdf

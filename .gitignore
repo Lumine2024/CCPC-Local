@@ -1,5 +1,5 @@
 # python binaries
-.venv/
+.venv*/
 __pycache__/
 *.pyc
 
@@ -15,4 +15,8 @@ logs/
 
 # private contests
 uestc-*
+ccpc-women-2026/
+
+# local editor configuration
+.vscode/
 

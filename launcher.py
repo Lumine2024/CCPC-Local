@@ -2,6 +2,7 @@
 import argparse
 import importlib.util
 import logging
+import math
 import os
 import signal
 import subprocess
@@ -22,9 +23,13 @@ def main():
     parser.add_argument("--port", type=int, default=8765, help="localhost 端口，0 表示自动分配")
     parser.add_argument("--data-dir", type=Path, default=ROOT / "tmp" / "ccpc-local", help="状态、缓存和日志目录")
     parser.add_argument("--no-browser", action="store_true", help="不自动打开浏览器")
+    parser.add_argument("--diagnostics-interval", type=float, default=0,
+                        help="持续诊断采样间隔秒数；0 关闭，建议 30")
     args = parser.parse_args()
     if not 0 <= args.port <= 65535:
         parser.error("端口须为 0–65535")
+    if not math.isfinite(args.diagnostics_interval) or args.diagnostics_interval < 0:
+        parser.error("诊断间隔不得为负数")
     if importlib.util.find_spec("psutil") is None:
         venv = ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
         if venv.is_file() and venv.resolve() != Path(sys.executable).resolve():
@@ -47,7 +52,8 @@ def main():
                         format="%(asctime)s %(levelname)s %(message)s", encoding="utf-8")
     from backend.contest import App
     from backend.server import Server
-    app, server = None, None
+    from backend.diagnostics import Monitor
+    app, server, monitor = None, None, None
     try:
         if not args.submissions.is_file():
             raise ValueError(f"历史文件不存在: {args.submissions}")
@@ -65,6 +71,8 @@ def main():
             print(f"端口 {args.port} 不可用，正在分配其他端口。", flush=True)
             server = Server(("127.0.0.1", 0), app)
         print(f"已加载 {len(app.problems)} 题、{len(app.contest.teams)} 队、{len(app.contest.events)} 条提交。", flush=True)
+        if args.diagnostics_interval:
+            monitor = Monitor(args.data_dir, args.diagnostics_interval, app, server)
         for diagnostic in app.contest.diagnostics:
             print(diagnostic, flush=True)
         url = f"http://127.0.0.1:{server.server_port}/"
@@ -78,6 +86,8 @@ def main():
         print(f"启动失败：{exc}", file=sys.stderr)
         return 1
     finally:
+        if monitor:
+            monitor.close()
         if server:
             server.server_close()
         if app:

@@ -1,0 +1,20 @@
+{
+  "problems": "tests/ICPC-Shaanxi-2025-National-Invitational-Contest",
+  "history": "tests/contest.txt",
+  "port": 0,
+  "sample_s": 30,
+  "duration_s": 10800,
+  "startup_timeout_s": 180,
+  "startup_poll_s": 1,
+  "request_timeout_s": 20,
+  "shutdown_timeout_s": 60,
+  "judge_timeout_s": 180,
+  "poll_s": 4,
+  "submit_interval_s": 600,
+  "disconnect_interval_s": 300,
+  "team": "Diagnostic VP",
+  "submissions": [
+    {"problem": "A", "language": "cpp", "source": "tests/ICPC-Shaanxi-2025-National-Invitational-Contest/A/src/solution.cpp", "expected": "AC"},
+    {"problem": "L", "language": "cpp", "source": "tests/ICPC-Shaanxi-2025-National-Invitational-Contest/L/src/solution.cpp", "expected": "AC"}
+  ]
+}

@@ -3,6 +3,7 @@ import base64
 import hashlib
 import io
 import json
+import re
 import tarfile
 import urllib.request
 from pathlib import Path
@@ -32,7 +33,17 @@ def main():
                 if not output.resolve().is_relative_to(ROOT.resolve()):
                     raise ValueError("unsafe archive path")
                 output.parent.mkdir(parents=True, exist_ok=True)
-                output.write_bytes(archive.extractfile(member).read())
+                content = archive.extractfile(member).read()
+                if name == "katex" and relative == "dist/README.md":
+                    # This subset omits the upstream contribution document.
+                    content = content.replace(b"](CONTRIBUTING.md)",
+                        f"](https://github.com/KaTeX/KaTeX/blob/v{version}/CONTRIBUTING.md)".encode())
+                if output.suffix in {".js", ".mjs", ".css"}:
+                    # Source maps are not distributed in the offline subset.
+                    cleaned = re.sub(rb"(?m)^[ \t]*//# sourceMappingURL=[^\r\n]*\r?$", b"", content)
+                    if cleaned != content:
+                        content = cleaned.rstrip(b"\r\n") + b"\n"
+                output.write_bytes(content)
         records.append({"package": name, "version": version, "source": dist["tarball"], "integrity": dist["integrity"]})
         print(f"Vendored {name} {version}", flush=True)
     (ROOT / "manifest.json").write_text(json.dumps(records, indent=2), encoding="utf-8")
